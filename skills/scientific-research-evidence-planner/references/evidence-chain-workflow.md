@@ -26,6 +26,8 @@ For algorithmic or method papers, separate:
 
 Inventory files before planning figures. Record the fields in `project-documentation.md`.
 
+Run a fit-for-purpose data audit before choosing the final endpoint. Ask whether the data contain the observables, resolution, coverage, controls, and null structure needed for the intended purpose. If the data are only partially fit, redesign the endpoint or restrict the claim before running analysis code.
+
 For spatial, imaging, targeted-panel, perturbation, or multimodal validation projects, explicitly audit:
 
 - whether coordinates, cell/nucleus boundaries, transcript coordinates, morphology or histology images, region annotations, and cell-type labels are present or absent;

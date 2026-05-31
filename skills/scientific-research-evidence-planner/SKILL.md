@@ -12,6 +12,7 @@ Treat every analysis as a test of a named scientific claim, not as a plot-produc
 - the target conclusion;
 - the minimum evidence needed to support it;
 - the data that can and cannot answer it;
+- whether the available data are fit for the experimental or validation purpose;
 - the exact experiment being run now;
 - how the result will be judged.
 
@@ -21,7 +22,7 @@ Use conservative language when evidence is incomplete. Separate observations, st
 
 Identify the active task axis before deep work and load only the relevant reference:
 
-- `data audit`, `documentation`, `file inventory`, `terminology`, or `progress log`: read `references/project-documentation.md`.
+- `data audit`, `fit-for-purpose data check`, `documentation`, `file inventory`, `terminology`, or `progress log`: read `references/project-documentation.md`.
 - `analysis design`, `experiment planning`, `script ordering`, `result judgment`, or `evidence chain`: read `references/evidence-chain-workflow.md`.
 - `reviewer-risk audit`, `claim stress test`, `comparator fairness`, or `pre-submission critique`: read `references/reviewer-risk-routing.md`.
 - `manuscript writing`: use `scientific-manuscript-writer`; use this skill only to keep the evidence chain and project records synchronized.
@@ -41,7 +42,7 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 ## Minimal Workflow
 
 1. State the claim being tested and what would count as success, partial success, or failure.
-2. Audit the data and identify what it can and cannot answer.
+2. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
 3. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
 4. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
 5. Judge the result before making final figures.
