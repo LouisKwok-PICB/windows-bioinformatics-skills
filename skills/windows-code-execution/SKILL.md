@@ -18,6 +18,8 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - Do not use shell redirection or `cat` to create/edit project files when manual edits are needed. Use `apply_patch`.
 - Do not build destructive file operations by string concatenation. Use native PowerShell cmdlets with resolved paths and `-LiteralPath`.
 - Keep PowerShell object construction simple. Do not embed complex `if/else`, loops, or multi-statement logic directly inside `[pscustomobject]@{...}` or hashtable literals; compute values in variables first, then construct the object. This avoids parser errors such as `An empty pipe element is not allowed`.
+- Do not confuse the PowerShell `foreach (...) { ... }` language statement with the `ForEach-Object` pipeline cmdlet. Piping cmdlet output to `ForEach-Object` is valid. The fragile pattern is piping directly from a completed `foreach (...) { ... }` statement or other multi-line script block into another command. Assign the loop output to a variable first, then pipe the variable. This avoids parser behavior such as `An empty pipe element is not allowed`.
+- When a command fails because of quoting, parsing, path, encoding, shell expansion, or pipeline structure, do not only patch the immediate command. Record the failed pattern, error symptom, safe replacement, and verification step in the relevant skill so the same failure is not repeated.
 
 ## Rscript Patterns
 
@@ -104,6 +106,68 @@ foreach ($p in @('data', 'results')) {
   }
 }
 ```
+
+Piping cmdlet output into `ForEach-Object` is a normal PowerShell pipeline and is acceptable:
+
+```powershell
+Select-String -LiteralPath $files -Pattern 'fit-for-purpose' |
+  ForEach-Object {
+    "{0}:{1}: {2}" -f $_.Path, $_.LineNumber, $_.Line
+  }
+```
+
+Avoid piping directly from a `foreach` language statement:
+
+```powershell
+# Fragile: parser behavior differs across hosts and often fails.
+foreach ($f in $files) {
+  [pscustomobject]@{ File = $f; Exists = Test-Path -LiteralPath $f }
+} | Format-Table -AutoSize
+```
+
+Use a collected variable, then pipe the variable:
+
+```powershell
+$rows = foreach ($f in $files) {
+  $exists = Test-Path -LiteralPath $f
+  [pscustomobject]@{
+    File = $f
+    Exists = $exists
+  }
+}
+
+$rows | Format-Table -AutoSize
+```
+
+For hash or QC checks, keep validation separate from display:
+
+```powershell
+$rows = foreach ($f in $files) {
+  $path = Join-Path $root $f
+  if (!(Test-Path -LiteralPath $path)) {
+    throw "Missing file: $path"
+  }
+
+  $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash
+  [pscustomobject]@{
+    File = $f
+    Hash = $hash
+  }
+}
+
+$rows | Sort-Object File | Format-Table -AutoSize
+```
+
+## Failure-To-Rule Update Pattern
+
+When a Windows command fails and is repaired during a task, update the relevant skill if the failure is reusable. Record:
+
+- the fragile pattern, such as `foreach (...) { ... } | Format-Table`, and distinguish it from valid cmdlet pipelines such as `Select-String ... | ForEach-Object { ... }`;
+- the observed symptom or error message, such as `An empty pipe element is not allowed`;
+- the safe replacement pattern;
+- the validation command that proves the replacement works.
+
+Use the most general appropriate skill. Put PowerShell, path, encoding, quoting, and command-structure lessons here. Put workflow-specific lessons, such as skill synchronization or publication packaging checks, in that workflow's skill.
 
 ## Python Patterns
 
