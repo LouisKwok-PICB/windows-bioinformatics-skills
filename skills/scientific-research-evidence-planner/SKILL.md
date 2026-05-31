@@ -19,6 +19,15 @@ Treat every analysis as a test of a named scientific claim, not as a plot-produc
 
 Use conservative language when evidence is incomplete. Separate observations, statistical support, biological interpretation, and manuscript-ready claims.
 
+## Recovery And Handoff Rule
+
+When you create or substantially revise a scientific project plan, create or update two recovery records at the project root unless the repository already defines equivalent active files:
+
+- `AGENT_MEMORY.yaml`: compact machine-readable memory for another agent to resume the project.
+- `docs/CURRENT_TASK.md`: human-readable active task record with the current goal, plan, progress, outputs, decisions, blockers, and next steps.
+
+Initialize these files during planning, not only at the end. After each completed task or meaningful workflow checkpoint, update both files before the final response. If the user already has active versions, preserve their structure and append/update the current state rather than overwriting older project memory. If a project is read-only, report that the recovery records could not be written and include the same handoff content in the final response.
+
 ## Purpose-Alignment Gate
 
 Before creating or running an analysis, write or update a compact design-to-interpretation record that answers:
@@ -61,12 +70,14 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 ## Minimal Workflow
 
 1. State the claim being tested and what would count as success, partial success, or failure.
-2. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
-3. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
-4. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
-5. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
-6. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
-7. Judge the result before making final figures.
-8. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
+2. Create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, initial plan, known files, decision rules, and recovery notes.
+3. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
+4. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
+5. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
+6. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
+7. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
+8. Judge the result before making final figures.
+9. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
+10. Before the final response, update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with completed work, changed files, current conclusions, remaining tasks, and any blockers.
 
 Do not turn a context-specific result into a universal method ranking. State the endpoint under which a method helps and acknowledge comparator signal that is actually detected.

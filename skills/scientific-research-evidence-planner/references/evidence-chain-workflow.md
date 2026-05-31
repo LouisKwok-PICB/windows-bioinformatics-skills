@@ -14,6 +14,13 @@ in [independent data/context], beyond [baseline/null/comparator], supporting
 
 List what would count as success, partial success, or failure. Identify required comparators, negative controls, null models, and robustness checks early.
 
+At the planning stage, create or update the project recovery records:
+
+- root-level `AGENT_MEMORY.yaml` for compact machine-readable state;
+- `docs/CURRENT_TASK.md` for the active human-readable task plan, progress, outputs, and next steps.
+
+These files are part of the evidence workflow, not optional notes. They should let another agent resume the project after interruption without relying on hidden conversation history.
+
 For algorithmic or method papers, separate:
 
 - what the method computes;
@@ -122,6 +129,8 @@ For each experiment attempt, record:
 - whether it strengthens, weakens, or does not affect the evidence chain;
 - whether it should remain a main result, move to supplementary diagnostics, be redesigned, or be dropped;
 - next decision.
+
+After each completed task, meaningful checkpoint, or changed decision, update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` before finalizing the turn. Record changed files, output locations, result judgment, current claim boundaries, remaining tasks, and any blocker that another agent must know.
 
 If an attempt fails, first adjust implementation while keeping the same scientific purpose. After about three distinct attempts fail for the same purpose, reassess whether the purpose is unsupported by the data, requires a different data source, or should be removed from the evidence chain.
 

@@ -10,6 +10,7 @@ You may find this useful if you:
 
 - run R, Python, PowerShell, ggplot2, ComplexHeatmap, or mixed bioinformatics scripts on Windows;
 - want analysis plans to start from a concrete claim and a fit-for-purpose data audit;
+- want each planned project to leave lightweight recovery notes so another agent can resume after interruption;
 - need publication figures that remain readable after journal-size export;
 - want source tables, scripts, figures, and manuscript text to stay synchronized;
 - need compute-heavy analyses to be moved from a local Windows machine to a server without changing the scientific endpoint;
@@ -19,6 +20,7 @@ You may find this useful if you:
 
 - 在 Windows 上运行 R、Python、PowerShell、ggplot2、ComplexHeatmap 或混合生信脚本；
 - 希望分析计划从明确科学结论和“数据是否适合该目的”的审查开始；
+- 希望每个有计划的项目都留下轻量级恢复记录，方便任务中断后由其他 assistant 接续；
 - 需要制作在期刊版面大小下仍然清晰可读的论文图片；
 - 希望 source tables、脚本、图片和 manuscript 文本保持一致；
 - 需要在本地 Windows 机器跑不动时，把计算量大的分析迁移到服务器，而不是降低原始科学目标；
@@ -28,7 +30,7 @@ You may find this useful if you:
 
 | Skill | What it helps with |
 |---|---|
-| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
+| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, execution-environment feasibility, recovery records, experiment records, reviewer risks, and conservative conclusions. |
 | `scientific-manuscript-writer` | Draft or audit Results, Methods, Discussion, figure legends, and reviewer-aware scientific prose from actual evidence. |
 | `publication-plot-styler` | Improve ggplot2, ComplexHeatmap, heatmaps, dotplots, UMAPs, labels, legends, spacing, and journal-style exports. |
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
@@ -38,7 +40,7 @@ You may find this useful if you:
 
 | Skill | 主要用途 |
 |---|---|
-| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析计划，维护证据链、文件清单、数据适配性审查、运行环境可行性、实验记录、审稿风险和保守结论边界。 |
+| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析计划，维护证据链、文件清单、数据适配性审查、运行环境可行性、恢复记录、实验记录、审稿风险和保守结论边界。 |
 | `scientific-manuscript-writer` | 基于真实结果撰写或审查 Results、Methods、Discussion、图注，以及面向审稿风险的科学表述。 |
 | `publication-plot-styler` | 优化 ggplot2、ComplexHeatmap、热图、点图、UMAP、标签、图例、间距和期刊风格导出。 |
 | `paper-figure-assembler` | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和栅格拉伸。 |
@@ -58,9 +60,9 @@ scientific-research-evidence-planner
 -> scientific-manuscript-writer
 ```
 
-In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, check whether the available data can actually answer that question, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
+In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, check whether the available data can actually answer that question, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
 
-这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，再判断现有数据是否真的能回答这个问题；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
+这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；再判断现有数据是否真的能回答这个问题；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
 
 ## Server-Run Scripts
 

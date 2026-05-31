@@ -6,6 +6,8 @@ Use this reference when a scientific data-analysis project needs durable Markdow
 
 Create or update a small set of Markdown files in the project docs folder. Prefer these names unless the repository already has equivalent active files:
 
+- `../AGENT_MEMORY.yaml` or root-level `AGENT_MEMORY.yaml`: compact machine-readable recovery memory for another agent.
+- `CURRENT_TASK.md`: human-readable active task state and handoff notes.
 - `PROJECT_PURPOSE.md`: scientific question, target conclusion, scope, non-goals, and claim boundaries.
 - `DATA_STRUCTURE.md`: data inventory, origin, format, key fields, coverage, quality caveats, and whether each file is active, supporting, historical, or unusable.
 - `SCRIPT_REGISTRY.md`: ordered scripts, purpose, inputs, outputs, status, execution environment, expected runtime, expected hardware, and whether each script is active or exploratory.
@@ -16,6 +18,38 @@ Create or update a small set of Markdown files in the project docs folder. Prefe
 - `TERMINOLOGY_LEDGER.md`: canonical names, abbreviations, aliases seen in files, and terms that must not be used as biological ground truth.
 
 Keep historical exploratory files if useful, but mark them as prior context rather than active workflow.
+
+## Recovery And Handoff Records
+
+Every planned scientific or data-analysis project should maintain two lightweight recovery records. Create or update them during planning, then update them after each completed task or meaningful checkpoint.
+
+Use root-level `AGENT_MEMORY.yaml` for compact machine-readable state. Include:
+
+- schema/version and last-updated date;
+- language or communication preference when relevant;
+- files to read first after resuming;
+- active goal and current task status;
+- current plan with step statuses;
+- key inputs, outputs, scripts, figures, tables, and manuscript files;
+- current conclusions and claim boundaries;
+- important terminology and forbidden or deprecated terms;
+- environment notes, server-run scripts, or execution blockers;
+- remaining work and next recommended action.
+
+Keep `AGENT_MEMORY.yaml` short enough to load quickly. Link to detailed Markdown records instead of copying long results.
+
+Use `docs/CURRENT_TASK.md` for human-readable active task context. Include:
+
+- active user request and why it matters;
+- current plan or checklist;
+- progress already completed in this task;
+- files changed or generated;
+- decisions made and their rationale;
+- current outputs to inspect;
+- blockers, risks, and assumptions;
+- exact next steps for another agent.
+
+Do not overwrite useful existing project memory. If the files already exist, update the relevant sections or add a dated checkpoint. If a task is interrupted, these two files should be enough for another agent to resume without rereading the entire conversation.
 
 ## Terminology Ledger
 
