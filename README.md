@@ -1,51 +1,76 @@
 # Windows Bioinformatics Skills / Windows 生信分析 Skills
 
-Reusable Codex skills for Windows-based bioinformatics and computational biology workflows, including research planning, manuscript writing, publication figures, figure-package organization, PDF handling, and reliable PowerShell/Rscript/Python execution.
+This repository collects a small set of Codex skills that I use to make Windows-based bioinformatics work less fragile: planning analyses around explicit evidence, writing manuscript text from actual results, making readable publication figures, packaging source tables and figure files, and avoiding common PowerShell/Rscript/Python execution mistakes.
 
-这是一组面向 Windows 生信分析与计算生物学工作流的可复用 Codex skills，覆盖科研分析规划、论文写作、发表级图片制作、论文图表材料整理、PDF 处理，以及更可靠的 PowerShell/Rscript/Python 命令执行。
+这个仓库整理了一组我在 Windows 生信分析中使用的 Codex skills。它们的目标不是替代科研判断，而是帮助 AI assistant 更稳定地完成几类重复但容易出错的工作：围绕证据链规划分析、基于真实结果组织论文内容、生成可发表的图、整理 source tables 和投稿文件，以及减少 PowerShell/Rscript/Python 执行中的路径和编码问题。
 
-This repository intentionally contains only general-purpose workflow skills. It does not include project-specific skills, unpublished method details, private datasets, local project paths, or manuscript-specific conclusions.
+## Who This Is For / 适合谁用
 
-本仓库只包含通用工作流 skills，不包含任何项目特异 skill、未公开方法细节、私有数据、本地项目路径或特定论文结论。
+This repository may be useful if you:
 
-## Included Skills / 包含的 Skills
+如果你有下面这些需求，这个仓库可能会有帮助：
 
-| Skill | Purpose | 用途 |
+- run bioinformatics or computational biology projects on Windows;
+- 在 Windows 上进行生信分析或计算生物学分析；
+- use R, ggplot2, ComplexHeatmap, Python, PowerShell, or mixed scripts;
+- 经常使用 R、ggplot2、ComplexHeatmap、Python、PowerShell 或混合脚本；
+- need manuscript figures that remain readable after journal-size export;
+- 需要制作在期刊版面大小下仍然清晰可读的论文图片；
+- want the assistant to keep analyses tied to explicit claims, source tables, and limitations;
+- 希望 AI assistant 把分析结果和明确论点、source tables、局限性对应起来；
+- want safer Windows command patterns for Rscript/Python and file operations.
+- 希望减少 Windows 下运行 Rscript/Python 和文件操作时的命令错误。
+
+## What Is Included / 包含内容
+
+| Skill | What it helps with | 主要用途 |
 |---|---|---|
-| `scientific-research-evidence-planner` | Plan and document bioinformatics or computational biology analyses around explicit hypotheses, evidence chains, file inventories, experiment attempts, reviewer risks, and conservative conclusions. | 围绕明确假设和证据链规划生信或计算生物学分析，记录文件清单、实验尝试、审稿风险和保守结论边界。 |
-| `scientific-manuscript-writer` | Draft, restructure, or audit evidence-first manuscript text, including Results, Methods, Discussion, legends, and reviewer-risk-aware wording. | 撰写、重组或审查以证据为核心的论文文本，包括 Results、Methods、Discussion、图注和审稿风险导向的表述。 |
-| `publication-plot-styler` | Create or repair publication-ready plots from R/ggplot2/ComplexHeatmap-style outputs, including legends, labels, heatmaps, dotplots, UMAPs, and export rules. | 优化发表级科研图，包括 R/ggplot2/ComplexHeatmap 风格输出、图例、标签、热图、点图、UMAP 和导出规则。 |
-| `paper-figure-assembler` | Assemble publication-ready multi-panel scientific figures from live R objects rather than cropped raster panels. | 基于 R 中的 live objects 组装发表级多 panel 图片，避免使用裁剪后的 raster 图片拼图。 |
-| `publication-content-packager` | Organize manuscript-facing figure publication packages with figures, source tables, supplementary tables, scripts, submission-ready files, and closeout QC. | 整理论文发表材料包，包括主图、附图、source tables、补充表格、脚本、投稿文件和最终 QC。 |
-| `windows-code-execution` | Run Windows PowerShell, Rscript, and Python commands more reliably, with path quoting and encoding safeguards. | 提供 Windows PowerShell、Rscript 和 Python 命令执行规则，减少路径、引号和编码问题。 |
-| `pdf` | Read, create, and visually review PDFs where layout matters. | 读取、创建和检查 PDF，尤其适用于需要确认排版和视觉布局的任务。 |
+| `scientific-research-evidence-planner` | Turning a research question into an evidence-chain analysis plan, with data inventory, experiment records, reviewer-risk checks, and conservative interpretation. | 将研究问题整理为证据链分析计划，记录数据清单、分析尝试、审稿风险和保守解释边界。 |
+| `scientific-manuscript-writer` | Drafting and auditing Results, Methods, Discussion, figure legends, and reviewer-risk-aware manuscript text. | 撰写和审查 Results、Methods、Discussion、图注，以及注意审稿风险的论文表述。 |
+| `publication-plot-styler` | Improving ggplot2/ComplexHeatmap-style panels, legends, heatmaps, dotplots, UMAPs, labels, and export settings. | 优化 ggplot2/ComplexHeatmap 风格图片，包括图例、热图、点图、UMAP、标签和导出设置。 |
+| `paper-figure-assembler` | Assembling multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和低分辨率问题。 |
+| `publication-content-packager` | Organizing manuscript-facing outputs: figures, source tables, supplementary tables, scripts, upload copies, and closeout QC. | 整理论文发表材料：主图、附图、source tables、补充表格、脚本、投稿文件和最终 QC。 |
+| `windows-code-execution` | PowerShell, Rscript, and Python execution patterns for paths, quoting, UTF-8, `$` expansion, and safer file operations. | Windows 命令执行规则，处理路径、引号、UTF-8、`$` 展开和文件操作安全问题。 |
+| `pdf` | Reading, creating, and visually checking PDFs when layout matters. | 处理需要关注排版和视觉效果的 PDF 读取、生成和检查任务。 |
 
-## What These Skills Are For / 这些 Skills 适合做什么
+## How The Skills Work Together / 如何组合使用
 
-These skills are designed to help an AI coding assistant:
+A common workflow is:
 
-这些 skills 用于帮助 AI coding assistant：
+一个常见使用流程是：
 
-- treat each analysis as a test of a named scientific claim;
-- 把每个分析都视为对明确科学论点的检验；
-- document bioinformatics inputs, scripts, source tables, outputs, and interpretation boundaries;
-- 记录生信分析输入、脚本、source tables、输出和解释边界；
-- separate observation, statistical support, biological or technical interpretation, and claim boundary;
-- 区分数据观察、统计支持、生物学或技术解释，以及结论边界；
-- keep manuscript claims traceable to figures, source tables, scripts, and statistics;
-- 让论文中的论点可以追溯到图片、source tables、脚本和统计量；
-- avoid overclaiming results, novelty, mechanisms, comparator failures, or proxy labels;
-- 避免过度宣称结果、创新性、机制、对照方法失败或 proxy label 的含义；
-- generate readable publication figures and supplementary figures;
-- 生成清晰可读的主图和补充图；
-- organize manuscript-facing outputs into reproducible figure packages;
-- 将面向论文的输出整理成可复现的图表发表包；
-- reduce Windows command quoting and Rscript/Python execution errors.
-- 减少 Windows 命令、Rscript 和 Python 执行中的路径、引号和编码错误。
+```text
+scientific-research-evidence-planner
+-> publication-plot-styler
+-> paper-figure-assembler
+-> publication-content-packager
+-> scientific-manuscript-writer
+```
 
-They do not replace scientific judgment, target-journal policy checks, statistical review, ethics review, or author responsibility for the manuscript.
+For example, the assistant can first define what a figure is supposed to prove, then generate or repair the source panels, assemble the final figure from R objects, package source tables and upload files, and only then draft manuscript text that matches the final evidence.
 
-这些 skills 不能替代研究者的科学判断、目标期刊政策核查、统计审查、伦理审查，也不能替代作者对论文内容的最终责任。
+例如，assistant 可以先明确某张图要支持什么结论，再生成或修复源 panel，随后用 R object 组装总图，整理 source tables 和投稿文件，最后再根据已经确定的证据撰写 manuscript 内容。
+
+## What This Repository Does Not Include / 不包含什么
+
+This repository does not include:
+
+本仓库不包含：
+
+- private project data or project-specific conclusions;
+- 私有项目数据或项目特异结论；
+- unpublished algorithm details;
+- 未公开算法细节；
+- local absolute project paths;
+- 本地绝对项目路径；
+- journal-specific guarantees;
+- 对特定期刊投稿成功的保证；
+- statistical, ethical, or biological validation by itself.
+- 对统计、伦理或生物学结论本身的验证。
+
+These skills help structure the work, but users still need to verify data, statistics, ethics, software versions, journal instructions, and final manuscript claims.
+
+这些 skills 只是帮助规范工作流程。用户仍然需要自行核查数据、统计方法、伦理要求、软件版本、目标期刊要求和最终论文结论。
 
 ## Repository Layout / 仓库结构
 
@@ -67,30 +92,15 @@ windows-bioinformatics-skills/
     pdf/
 ```
 
-Each skill is self-contained and includes its own `SKILL.md`. Some skills include `references/`, `agents/`, or `assets/`; copy the full skill directory, not only `SKILL.md`.
+Each skill is self-contained. Copy the whole skill directory, not only `SKILL.md`, because some skills include `references/`, `agents/`, or `assets/`.
 
-每个 skill 都是独立目录，并包含自己的 `SKILL.md`。部分 skill 还包含 `references/`、`agents/` 或 `assets/`；安装或复制时应复制完整 skill 目录，而不是只复制 `SKILL.md`。
+每个 skill 都是独立目录。复制或安装时应复制完整目录，而不是只复制 `SKILL.md`，因为部分 skill 依赖 `references/`、`agents/` 或 `assets/`。
 
 ## Installation / 安装
 
 See [INSTALL.md](INSTALL.md).
 
 安装方式见 [INSTALL.md](INSTALL.md)。
-
-## Scope And Safety / 范围与安全
-
-See [SECURITY_AND_SCOPE.md](SECURITY_AND_SCOPE.md). In short:
-
-详细说明见 [SECURITY_AND_SCOPE.md](SECURITY_AND_SCOPE.md)。简要来说：
-
-- no private project data are included;
-- 不包含私有项目数据；
-- no unpublished algorithm-specific or project-specific rules are included;
-- 不包含未公开算法细节或项目特异规则；
-- no local absolute project paths are included;
-- 不包含本地绝对项目路径；
-- users should verify target-journal instructions before final submission.
-- 用户在最终投稿前仍需核查目标期刊的最新要求。
 
 ## License / 许可证
 
