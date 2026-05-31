@@ -44,8 +44,9 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 1. State the claim being tested and what would count as success, partial success, or failure.
 2. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
 3. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
-4. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
-5. Judge the result before making final figures.
-6. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
+4. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
+5. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
+6. Judge the result before making final figures.
+7. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
 
 Do not turn a context-specific result into a universal method ranking. State the endpoint under which a method helps and acknowledge comparator signal that is actually detected.

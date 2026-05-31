@@ -116,6 +116,8 @@ Keep source tables separate from formal supplementary tables. Source tables shou
 - Use established packages for specialized tasks when available. Install missing routine packages when the environment allows it, and record package use in Methods, session info, or logs.
 - Keep scripts ordered and named by workflow stage. Avoid unnumbered one-off scripts in the active publication path.
 - Include session information or environment metadata for computational reproducibility.
+- If any manuscript-facing output depends on a script that could not run on the local Windows machine because of hardware or environment limits, include the server-run script in the package. The script should have user-editable input/output paths and major parameters at the top, create output directories, validate required inputs, write logs/session info, and be runnable with a single command on the target server.
+- Mark server-run outputs as pending until the returned files exist, match the expected paths, and pass source-table or figure regeneration checks. Do not package locally downsampled substitutes as final results unless they are explicitly part of the manuscript design.
 
 ## Closeout QC
 

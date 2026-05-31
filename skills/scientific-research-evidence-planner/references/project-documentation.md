@@ -8,7 +8,7 @@ Create or update a small set of Markdown files in the project docs folder. Prefe
 
 - `PROJECT_PURPOSE.md`: scientific question, target conclusion, scope, non-goals, and claim boundaries.
 - `DATA_STRUCTURE.md`: data inventory, origin, format, key fields, coverage, quality caveats, and whether each file is active, supporting, historical, or unusable.
-- `SCRIPT_REGISTRY.md`: ordered scripts, purpose, inputs, outputs, status, expected runtime, and whether each script is active or exploratory.
+- `SCRIPT_REGISTRY.md`: ordered scripts, purpose, inputs, outputs, status, execution environment, expected runtime, expected hardware, and whether each script is active or exploratory.
 - `EVIDENCE_CHAIN.md`: claim-to-evidence table with required analyses, current status, strength, caveats, and next action.
 - `PROJECT_PLAN.md` or figure-specific plan: staged workflow from data audit to manuscript outputs.
 - `PROGRESS_LOG.md`: dated log of analyses, parameters, outputs, decisions, failures, retries, and user-provided file changes.
@@ -61,6 +61,23 @@ For each target conclusion or experiment, record:
 - consequence: proceed, redesign endpoint, restrict claim, seek another dataset, move to exploratory status, or stop the analysis.
 
 Do not promote an analysis to manuscript-facing status until the data-purpose fit is documented. If the data are only partially fit, state exactly which claim is still allowed and which claim is not supported.
+
+## Execution-Environment Feasibility
+
+After confirming that the data are fit for purpose, separately judge whether the current machine can run the required analysis. Hardware or local software limits are not evidence that the analysis is unsupported.
+
+For compute-heavy scripts, record:
+
+- current environment: local Windows, server, high-performance computing cluster, cloud, or unknown;
+- blocker if local execution is not feasible: memory, CPU, disk, wall-time, package availability, operating system, or permissions;
+- required or expected resources when known;
+- whether a server-run script was created;
+- path to the server-run script;
+- user-editable inputs and outputs in that script;
+- expected output files;
+- status of returned outputs and validation.
+
+If local execution is blocked, prefer a portable server-run script with a top configuration block for input/output paths and parameters. Do not silently downsample, change thresholds, reduce the feature universe, or replace the planned endpoint with a weaker analysis unless explicitly labeled as exploratory.
 
 ## Project-State Hygiene
 

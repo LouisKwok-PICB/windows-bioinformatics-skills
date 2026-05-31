@@ -84,6 +84,17 @@ Name scripts with numeric prefixes once the active workflow is known. Prefer the
 
 Keep exploratory scripts, but label them as `exploratory` in `SCRIPT_REGISTRY.md` until promoted.
 
+If the full analysis cannot run on the current Windows machine because of memory, CPU, disk, wall-time, package, or operating-system constraints, do not redefine the scientific endpoint only to make it locally runnable. Prepare a server-run script that can be copied to a larger machine and run after editing paths at the top of the script.
+
+Server-run scripts should:
+
+- expose input paths, output paths, thread counts, seeds, memory-sensitive parameters, and overwrite behavior in a top configuration block;
+- validate required input files and create output directories before heavy computation;
+- avoid local private absolute paths, GUI prompts, and interactive choices;
+- write logs, session information, parameters, and expected output paths;
+- be runnable with one command such as `Rscript script_name.R` or `python script_name.py`;
+- be recorded in `SCRIPT_REGISTRY.md` with status, expected runtime, expected hardware, inputs, outputs, and whether outputs have been returned and validated.
+
 ## 5. Run Experiments Iteratively
 
 For each experiment attempt, record:
@@ -92,6 +103,7 @@ For each experiment attempt, record:
 - script and version/path;
 - key parameters;
 - inputs and outputs;
+- execution environment: local, server, HPC, cloud, or not yet run;
 - result summary;
 - whether it achieved the experiment purpose;
 - whether it strengthens, weakens, or does not affect the evidence chain;

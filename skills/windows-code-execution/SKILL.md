@@ -20,6 +20,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - Keep PowerShell object construction simple. Do not embed complex `if/else`, loops, or multi-statement logic directly inside `[pscustomobject]@{...}` or hashtable literals; compute values in variables first, then construct the object. This avoids parser errors such as `An empty pipe element is not allowed`.
 - Do not confuse the PowerShell `foreach (...) { ... }` language statement with the `ForEach-Object` pipeline cmdlet. Piping cmdlet output to `ForEach-Object` is valid. The fragile pattern is piping directly from a completed `foreach (...) { ... }` statement or other multi-line script block into another command. Assign the loop output to a variable first, then pipe the variable. This avoids parser behavior such as `An empty pipe element is not allowed`.
 - When a command fails because of quoting, parsing, path, encoding, shell expansion, or pipeline structure, do not only patch the immediate command. Record the failed pattern, error symptom, safe replacement, and verification step in the relevant skill so the same failure is not repeated.
+- If a script cannot reasonably run on the current Windows machine because of memory, CPU, disk, wall-time, package, or local-environment limits, treat it as an execution-environment constraint, not as evidence against the analysis. Create a portable server-run script instead of weakening the scientific endpoint.
 
 ## Rscript Patterns
 
@@ -57,6 +58,59 @@ cat(df$Gene[1])
 ```
 
 It may fail from BOM/encoding or `$`/quote interactions depending on how the command is constructed.
+
+## Server-Run Script Pattern
+
+When local Windows hardware or environment limits prevent a full analysis from running, prepare a server-run script that the user can edit and run directly on a larger machine. Do this when the analysis is still scientifically needed and the blocker is compute, memory, disk, wall-time, package availability, or operating-system limits.
+
+Do not silently downsample, reduce model scope, change thresholds, or switch to a weaker endpoint just to make the task finish locally unless the user explicitly asks for that exploratory shortcut.
+
+For server-run scripts:
+
+- put all user-editable paths and major parameters at the top of the script;
+- use generic placeholders such as `/path/to/input` and `/path/to/output`, not local private paths;
+- define `input_dir`, `output_dir`, key input file names, thread counts, memory-sensitive parameters, seeds, and overwrite behavior in one configuration block;
+- create output directories with recursive creation;
+- validate required input files before heavy computation starts;
+- write logs, session information, package versions, parameters, and expected output paths;
+- keep the script runnable by a single command such as `Rscript script_name.R` or `python script_name.py`;
+- avoid interactive prompts, GUI dependencies, and machine-specific absolute paths;
+- include comments telling the user which variables should be edited and which should usually remain unchanged.
+
+R template:
+
+```r
+## ---- User-editable paths and parameters ----
+input_dir <- "/path/to/input"
+output_dir <- "/path/to/output"
+input_rds <- file.path(input_dir, "analysis_input.rds")
+threads <- 8
+seed <- 1
+overwrite <- FALSE
+
+## ---- Setup ----
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+stopifnot(file.exists(input_rds))
+set.seed(seed)
+
+log_file <- file.path(output_dir, "run_log.txt")
+sink(log_file, split = TRUE)
+cat("Started:", format(Sys.time()), "\n")
+cat("Input:", input_rds, "\n")
+cat("Output:", output_dir, "\n")
+
+## ---- Analysis ----
+obj <- readRDS(input_rds)
+## Run the heavy analysis here.
+
+## ---- Save outputs and environment ----
+saveRDS(obj, file.path(output_dir, "analysis_result.rds"))
+writeLines(capture.output(sessionInfo()), file.path(output_dir, "sessionInfo.txt"))
+cat("Finished:", format(Sys.time()), "\n")
+sink()
+```
+
+If generating a script for Linux/HPC from a Windows workspace, use POSIX-style placeholders inside the server script and provide a separate Windows command only for local syntax checking when needed.
 
 ## PowerShell Reading Patterns
 
