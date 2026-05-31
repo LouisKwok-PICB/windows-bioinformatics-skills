@@ -10,6 +10,7 @@ description: Plan, document, and iteratively execute scientific data-analysis pr
 Treat every analysis as a test of a named scientific claim, not as a plot-production task. Before changing scripts or figures, identify:
 
 - the target conclusion;
+- the research-purpose alignment: why this analysis is the right experiment for the biological or methodological problem, rather than only a convenient computable statistic;
 - the minimum evidence needed to support it;
 - the data that can and cannot answer it;
 - whether the available data are fit for the experimental or validation purpose;
@@ -17,6 +18,24 @@ Treat every analysis as a test of a named scientific claim, not as a plot-produc
 - how the result will be judged.
 
 Use conservative language when evidence is incomplete. Separate observations, statistical support, biological interpretation, and manuscript-ready claims.
+
+## Purpose-Alignment Gate
+
+Before creating or running an analysis, write or update a compact design-to-interpretation record that answers:
+
+- experimental design: what biological or methodological problem the analysis tests;
+- data fit: what observable in the data can answer that problem and what cannot;
+- readout logic: why the selected statistic, plot, model, comparator, null, or threshold reflects the research purpose;
+- result judgment: what would count as support, partial support, failure, or a diagnostic-only result;
+- interpretation boundary: what conclusion is allowed if the analysis succeeds, and what must not be claimed.
+
+After the analysis runs, update the same record with:
+
+- observed result and source files;
+- whether the result directly supports the research purpose, only supports a weaker/subordinate purpose, contradicts the purpose, or is merely diagnostic;
+- the next decision for the evidence chain.
+
+If an analysis does not have a clear design-to-interpretation path back to the research purpose, do not promote it to a main result. Redesign it, move it to supplementary diagnostics, or drop it.
 
 ## Routing
 
@@ -43,10 +62,11 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 
 1. State the claim being tested and what would count as success, partial success, or failure.
 2. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
-3. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
-4. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
-5. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
-6. Judge the result before making final figures.
-7. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
+3. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
+4. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
+5. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
+6. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
+7. Judge the result before making final figures.
+8. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
 
 Do not turn a context-specific result into a universal method ranking. State the endpoint under which a method helps and acknowledge comparator signal that is actually detected.

@@ -22,6 +22,16 @@ For algorithmic or method papers, separate:
 - what comparator or ablation isolates the claimed contribution;
 - which failure modes, costs, or applicability limits remain.
 
+Before an analysis is allowed into the active workflow, pass the purpose-alignment gate:
+
+- experimental design: state what biological or methodological problem the analysis tests;
+- data fit: identify the data observable that can answer the problem and what the data cannot answer;
+- readout logic: explain why the statistic, model, plot, comparator, null, or threshold reflects the research purpose rather than only being convenient to compute;
+- result judgment: define support, partial support, failure, and diagnostic-only outcomes before seeing the result;
+- interpretation boundary: define the conclusion allowed if the result succeeds and the claims that remain forbidden.
+
+After the analysis runs, update the same record with observed results, source files, whether the result directly supports the research purpose or only a weaker/subordinate purpose, and the next evidence-chain decision.
+
 ## 2. Audit Data Before Analysis
 
 Inventory files before planning figures. Record the fields in `project-documentation.md`.
@@ -41,11 +51,13 @@ For spatial, imaging, targeted-panel, perturbation, or multimodal validation pro
 For each proposed panel or analysis, define:
 
 - purpose: what inference this panel or statistic enables;
+- research-purpose alignment: why this inference matters for the central biological or methodological question;
 - input data and required fields;
 - method and comparator;
 - primary readout;
 - quality control;
 - decision rule;
+- interpretation boundary;
 - manuscript claim if successful;
 - fallback or retry plan if unsuccessful.
 
@@ -100,6 +112,7 @@ Server-run scripts should:
 For each experiment attempt, record:
 
 - question tested;
+- research-purpose alignment and whether this attempt still tests it;
 - script and version/path;
 - key parameters;
 - inputs and outputs;
@@ -107,6 +120,7 @@ For each experiment attempt, record:
 - result summary;
 - whether it achieved the experiment purpose;
 - whether it strengthens, weakens, or does not affect the evidence chain;
+- whether it should remain a main result, move to supplementary diagnostics, be redesigned, or be dropped;
 - next decision.
 
 If an attempt fails, first adjust implementation while keeping the same scientific purpose. After about three distinct attempts fail for the same purpose, reassess whether the purpose is unsupported by the data, requires a different data source, or should be removed from the evidence chain.
@@ -115,6 +129,7 @@ If an attempt fails, first adjust implementation while keeping the same scientif
 
 Evaluate each candidate result with these questions:
 
+- Does the result answer the research-purpose question the analysis was designed for?
 - Does the visual or statistic directly show the intended phenomenon?
 - Is the comparator matched to the same data limitations?
 - Are null models and thresholds appropriate for the inference?
@@ -124,6 +139,8 @@ Evaluate each candidate result with these questions:
 - Would a skeptical reviewer understand the evidence without relying on the author's intent?
 
 Do not assemble final multi-panel figures until individual panels are judged interpretable.
+
+If a result is statistically valid but does not answer the intended research-purpose question, keep it as a diagnostic or supplementary result. Do not retrofit the research purpose around whatever was easiest to compute.
 
 ## 7. Write Conclusions Conservatively
 
