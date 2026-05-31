@@ -1,0 +1,7 @@
+interface:
+  display_name: "Windows Code Execution"
+  short_description: "Reliable PowerShell, Rscript, Python, and path quoting patterns."
+  default_prompt: "Use $windows-code-execution to run this Windows command safely and avoid PowerShell quoting or encoding pitfalls."
+
+policy:
+  allow_implicit_invocation: true

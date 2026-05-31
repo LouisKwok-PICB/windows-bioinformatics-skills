@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Manuscript Writer"
+  short_description: "Draft and audit evidence-first scientific manuscript text."
+  default_prompt: "Draft, restructure, or audit manuscript text from my claims, evidence, figures, methods, and limitations."

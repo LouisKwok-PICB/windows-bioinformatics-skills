@@ -1,0 +1,28 @@
+.DS_Store
+Thumbs.db
+
+# Local editor and OS files
+.vscode/
+.idea/
+*.swp
+*.tmp
+*.bak
+
+# Python/R caches
+__pycache__/
+.pytest_cache/
+.Rhistory
+.RData
+.Rproj.user/
+
+# Local logs and generated archives
+*.log
+*.zip
+*.tar.gz
+
+# Keep private project outputs out of this shareable repository
+data/
+results/
+publication/
+manuscript/
+docs/

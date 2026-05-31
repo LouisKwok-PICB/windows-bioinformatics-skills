@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publication Content Packager"
+  short_description: "Organize manuscript-ready figure publication packages."
+  default_prompt: "Use $publication-content-packager to organize a manuscript-ready figure publication package with evidence boundaries and submission-ready outputs."
