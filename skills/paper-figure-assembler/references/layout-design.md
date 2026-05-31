@@ -2,6 +2,14 @@
 
 Use this reference when designing a manuscript main figure or supplementary figure. The goal is to maximize readable evidence per page without making panels cramped or visually sparse.
 
+## Quick Navigation
+
+- Start with figure logic: `Design Principles`
+- Choose physical dimensions: `Canvas Size Heuristics`, `PLOS Readability Gate`
+- Allocate panel area: `Area Allocation Rules`, `Layout Skeleton`
+- Handle repeated embeddings: `Equal-Viewport Multi-UMAP Panel`
+- Final visual checks: `Whitespace QC Checklist`
+
 ## Design Principles
 
 - Start from the evidence chain, not from a grid. Panel order should match the reader's reasoning path.

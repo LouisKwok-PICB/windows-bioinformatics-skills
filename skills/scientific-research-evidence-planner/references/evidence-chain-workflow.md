@@ -2,6 +2,15 @@
 
 Use this reference when planning, executing, or judging scientific data-analysis experiments around a target conclusion.
 
+## Quick Navigation
+
+- Define the claim and success criteria: `1. Extract The Scientific Target`
+- Check data fit before coding: `2. Audit Data Before Analysis`
+- Build panel/analysis logic: `3. Build The Evidence Chain`
+- Make execution reproducible: `4. Order Scripts`, `5. Run Experiments Iteratively`
+- Decide promotion status before figures: `6. Judge Results Before Final Figures`
+- Write bounded conclusions: `7. Write Conclusions Conservatively`
+
 ## 1. Extract The Scientific Target
 
 Write the target as a falsifiable or supportable statement:

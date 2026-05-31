@@ -60,9 +60,9 @@ scientific-research-evidence-planner
 -> scientific-manuscript-writer
 ```
 
-In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, check whether the available data can actually answer that question, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
+In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, check whether the available data can actually answer that question, record panel-level evidence gates before any manuscript-facing figure assembly or publication package, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
 
-这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；再判断现有数据是否真的能回答这个问题；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
+这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；再判断现有数据是否真的能回答这个问题；在任何面向 manuscript 的最终组图或 publication package 之前，记录并通过 panel-level evidence gate；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
 
 ## Server-Run Scripts
 

@@ -2,6 +2,14 @@
 
 Use this reference when writing or repairing an R script that assembles a manuscript figure from live objects.
 
+## Quick Navigation
+
+- Start a new assembly script: `Minimal Template`, `Required Structure`
+- Draw heatmaps safely: `ComplexHeatmap Rules`
+- Avoid nested tag problems: `Patchwork Rules`
+- Record outputs: `Figure Manifest`
+- Check final exports: `Visual Checklist`, `Synchronization Checklist`
+
 ## Minimal Template
 
 ```r

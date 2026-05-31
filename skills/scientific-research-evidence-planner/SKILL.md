@@ -46,6 +46,23 @@ After the analysis runs, update the same record with:
 
 If an analysis does not have a clear design-to-interpretation path back to the research purpose, do not promote it to a main result. Redesign it, move it to supplementary diagnostics, or drop it.
 
+## Figure Assembly Gate
+
+Before creating a final figure assembly script, publication package, manuscript-facing figure panel, or upload-ready figure file, do not treat a recovery file's `next_action` or an existing script plan as sufficient authorization. First verify that a current panel-level gate record exists, or create one.
+
+For every proposed final or manuscript-facing panel, the gate record must state:
+
+- method-native premise;
+- biological or validation question;
+- independent observable;
+- matched readout;
+- result judgment;
+- allowed claim;
+- forbidden claim;
+- promotion status.
+
+If any proposed panel is `diagnostic_only`, `exploratory_only`, `failed_original_claim`, `needs_redesign`, or otherwise not clearly supported, do not proceed to final assembly until the user accepts demotion, redesign, or explicit limitation wording. Update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` so future agents do not skip this gate.
+
 ## Routing
 
 Identify the active task axis before deep work and load only the relevant reference:
@@ -76,7 +93,7 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 5. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
 6. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
 7. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
-8. Judge the result before making final figures.
+8. Judge the result before making final figures, and apply the Figure Assembly Gate before any manuscript-facing panel assembly or publication package.
 9. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
 10. Before the final response, update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with completed work, changed files, current conclusions, remaining tasks, and any blockers.
 

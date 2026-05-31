@@ -9,7 +9,7 @@ Use when a project needs a documented evidence chain, file inventory, experiment
 Use with:
 
 - `scientific-manuscript-writer` for manuscript text.
-- `publication-plot-styler` and `paper-figure-assembler` once a result is ready to visualize.
+- `publication-plot-styler` and `paper-figure-assembler` once a result has passed the relevant evidence and panel-promotion gates.
 - `publication-content-packager` when outputs are mature enough to organize for submission.
 
 ## Manuscript Writing
@@ -59,5 +59,6 @@ Use when reading, creating, or reviewing PDFs where rendering and layout matter.
 
 - Do not use writing skills to invent missing data, statistics, citations, or conclusions.
 - Do not use figure skills to decide whether a scientific claim is supported.
+- Do not treat a recovery note, script plan, or draft figure list as permission for final figure assembly; verify panel-level evidence gates first.
 - Do not use packaging skills to promote exploratory outputs to manuscript-facing status.
 - Always verify target-journal requirements before final submission.

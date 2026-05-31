@@ -2,6 +2,15 @@
 
 Use these generic examples as starting points for manuscript-facing plots. Adapt variable names, labels, and palettes to the dataset. Do not copy project-specific module names or biological claims into reusable scripts.
 
+## Quick Navigation
+
+- Shared theme: `Shared ggplot Theme`
+- Summary encodings: `Dotplot`, `Lollipop / High-Tail Fraction Plot`, `Horizontal Bar Chart`
+- Heatmaps: `ComplexHeatmap`
+- Embeddings: `UMAP / Dense Scatter With Transparent Labels`, `UMAP Axis-Line-Only Style`, `Binary Highlight UMAP`
+- Enrichment and flows: `Enrichment Dotplot With Two Representative Terms`, `Alluvial / Sankey`
+- Export checks: `Submission TIFF Manifest`
+
 ## Shared ggplot Theme
 
 ```r
