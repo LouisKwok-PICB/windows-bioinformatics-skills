@@ -1,8 +1,8 @@
 # Windows Bioinformatics Skills
 
-This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, make readable publication figures, organize manuscript-facing files, and avoid common Windows command pitfalls.
+This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, make readable publication figures, organize manuscript-facing files, avoid common Windows command pitfalls, and prepare portable server-run scripts when local hardware is not enough.
 
-这个仓库整理了一组我在 Windows 生信分析和计算生物学工作中使用的 Codex skills。它们的目的不是替代科研判断，而是让 AI assistant 在协助分析时更稳健：先判断数据是否适合当前科学问题，再围绕明确证据链推进分析，生成可读的论文图片，整理投稿相关文件，并减少 Windows 下常见的命令、路径和编码问题。
+这个仓库整理了一组我在 Windows 生信分析和计算生物学工作中使用的 Codex skills。它们的目的不是替代科研判断，而是让 AI assistant 在协助分析时更稳健：先判断数据是否适合当前科学问题，再围绕明确证据链推进分析，生成可读的论文图片，整理投稿相关文件，减少 Windows 下常见的命令、路径和编码问题，并在本机硬件不足时生成可迁移到服务器运行的脚本。
 
 ## Who This Is For
 
@@ -12,6 +12,7 @@ You may find this useful if you:
 - want analysis plans to start from a concrete claim and a fit-for-purpose data audit;
 - need publication figures that remain readable after journal-size export;
 - want source tables, scripts, figures, and manuscript text to stay synchronized;
+- need compute-heavy analyses to be moved from a local Windows machine to a server without changing the scientific endpoint;
 - want reusable rules for safer Windows command execution.
 
 如果你有下面这些需求，这个仓库可能会有帮助：
@@ -20,28 +21,29 @@ You may find this useful if you:
 - 希望分析计划从明确科学结论和“数据是否适合该目的”的审查开始；
 - 需要制作在期刊版面大小下仍然清晰可读的论文图片；
 - 希望 source tables、脚本、图片和 manuscript 文本保持一致；
+- 需要在本地 Windows 机器跑不动时，把计算量大的分析迁移到服务器，而不是降低原始科学目标；
 - 希望有一套更安全的 Windows 命令执行规则。
 
 ## Included Skills
 
 | Skill | What it helps with |
 |---|---|
-| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, experiment records, reviewer risks, and conservative conclusions. |
+| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
 | `scientific-manuscript-writer` | Draft or audit Results, Methods, Discussion, figure legends, and reviewer-aware scientific prose from actual evidence. |
 | `publication-plot-styler` | Improve ggplot2, ComplexHeatmap, heatmaps, dotplots, UMAPs, labels, legends, spacing, and journal-style exports. |
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
 | `publication-content-packager` | Organize manuscript-facing outputs, including figures, source tables, supplementary tables, scripts, upload copies, and closeout QC records. |
-| `windows-code-execution` | Use safer PowerShell, Rscript, and Python patterns for paths, quoting, UTF-8, `$` expansion, and file operations on Windows. |
+| `windows-code-execution` | Use safer PowerShell, Rscript, and Python patterns for paths, quoting, UTF-8, `$` expansion, file operations on Windows, and portable server-run scripts. |
 | `pdf` | Read, create, and visually check PDFs when layout, pagination, or rendered appearance matters. |
 
 | Skill | 主要用途 |
 |---|---|
-| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析计划，维护证据链、文件清单、数据适配性审查、实验记录、审稿风险和保守结论边界。 |
+| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析计划，维护证据链、文件清单、数据适配性审查、运行环境可行性、实验记录、审稿风险和保守结论边界。 |
 | `scientific-manuscript-writer` | 基于真实结果撰写或审查 Results、Methods、Discussion、图注，以及面向审稿风险的科学表述。 |
 | `publication-plot-styler` | 优化 ggplot2、ComplexHeatmap、热图、点图、UMAP、标签、图例、间距和期刊风格导出。 |
 | `paper-figure-assembler` | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和栅格拉伸。 |
 | `publication-content-packager` | 整理论文发表相关输出，包括图片、source tables、补充表、脚本、投稿副本和最终 QC 记录。 |
-| `windows-code-execution` | 提供 Windows 下更稳健的 PowerShell、Rscript、Python 执行规则，处理路径、引号、UTF-8、`$` 展开和文件操作。 |
+| `windows-code-execution` | 提供 Windows 下更稳健的 PowerShell、Rscript、Python 执行规则，处理路径、引号、UTF-8、`$` 展开、文件操作和服务器运行脚本。 |
 | `pdf` | 在需要关注排版、页码或渲染效果时，读取、生成和检查 PDF。 |
 
 ## Typical Workflow
@@ -56,9 +58,15 @@ scientific-research-evidence-planner
 -> scientific-manuscript-writer
 ```
 
-In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, check whether the available data can actually answer that question, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
+In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, check whether the available data can actually answer that question, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
 
-这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，再判断现有数据是否真的能回答这个问题；随后生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后再根据已经确认的证据撰写 manuscript 文本。
+这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，再判断现有数据是否真的能回答这个问题；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
+
+## Server-Run Scripts
+
+Some bioinformatics analyses are too large for a local Windows machine. In that case, these skills instruct the assistant to treat the problem as an execution-environment limit, not as a reason to weaken the analysis. The expected output is a portable R or Python script with input paths, output paths, thread counts, seeds, and major parameters placed at the top so the user can edit them and run the script directly on a server.
+
+有些生信分析不适合在本地 Windows 机器上完成。遇到这种情况时，这些 skills 要求 assistant 将问题视为运行环境限制，而不是降低分析目标。更合适的输出是一个可迁移的 R 或 Python 脚本，把输入路径、输出路径、线程数、seed 和关键参数集中放在脚本顶部，用户修改后即可在服务器上直接运行。
 
 ## What This Repository Does Not Do
 
