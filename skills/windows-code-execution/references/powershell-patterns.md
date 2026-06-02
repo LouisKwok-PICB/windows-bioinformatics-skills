@@ -137,6 +137,45 @@ $rows = foreach ($f in $files) {
 $rows | Sort-Object File | Format-Table -AutoSize
 ```
 
+## Relative Path Compatibility
+
+Do not assume the current Windows PowerShell host exposes newer .NET APIs such as `[System.IO.Path]::GetRelativePath()`. On older hosts this fails with:
+
+```text
+Method invocation failed because [System.IO.Path] does not contain a method named 'GetRelativePath'.
+```
+
+Fragile manifest pattern:
+
+```powershell
+$rel = [System.IO.Path]::GetRelativePath($root, $file.FullName)
+```
+
+Stable PowerShell replacement:
+
+```powershell
+$rootItem = Get-Item -LiteralPath 'results\package_dir'
+$root = $rootItem.FullName.TrimEnd('\')
+$prefix = $root + '\'
+
+$rows = foreach ($file in Get-ChildItem -LiteralPath $root -Recurse -File) {
+  if ($file.FullName.StartsWith($prefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+    $rel = $file.FullName.Substring($prefix.Length).Replace('\','/')
+  } else {
+    $rel = $file.Name
+  }
+
+  [pscustomobject]@{
+    RelativePath = $rel
+    Bytes = $file.Length
+  }
+}
+
+$rows | Sort-Object RelativePath | Export-Csv -LiteralPath 'FILE_MANIFEST.csv' -NoTypeInformation -Encoding UTF8
+```
+
+This replacement was validated during a package manifest refresh after the `GetRelativePath()` call failed in a Windows PowerShell environment.
+
 ## Failure-To-Rule Update Pattern
 
 When a Windows command fails and is repaired during a task, update the relevant skill if the failure is reusable. Record:

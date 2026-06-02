@@ -19,6 +19,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - Do not build destructive file operations with string-concatenated shell commands. Resolve paths and use native PowerShell cmdlets.
 - Keep PowerShell object construction simple: compute conditional values first, then create `[pscustomobject]`.
 - Do not pipe directly from a `foreach (...) { ... }` language statement. Assign loop output to `$rows`, then pipe `$rows`.
+- Do not assume newer .NET APIs are present in Windows PowerShell. In particular, `[System.IO.Path]::GetRelativePath()` may be unavailable; for manifest/QC relative paths, compute a normalized root prefix and use `Substring()` after checking `StartsWith()`, or delegate path normalization to R/Python.
 - Treat memory, CPU, disk, wall-time, package, or OS limits as execution-environment constraints. Create a portable server-run script rather than weakening the scientific endpoint.
 - When a reusable Windows command failure is fixed, update the relevant skill or reference with the failed pattern, symptom, safe replacement, and validation.
 
