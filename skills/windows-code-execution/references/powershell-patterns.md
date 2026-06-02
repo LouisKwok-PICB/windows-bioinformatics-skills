@@ -22,6 +22,29 @@ Search files:
 rg -n "pattern|Gene" data\example_dir
 ```
 
+Search a known list of files with `Select-String -LiteralPath`:
+
+```powershell
+$files = Get-ChildItem -LiteralPath 'scripts\analysis' -File -Filter '*.R'
+Select-String -LiteralPath $files.FullName -Pattern 'readRDS|write.csv' |
+  ForEach-Object {
+    "{0}:{1}: {2}" -f $_.Path, $_.LineNumber, $_.Line
+  }
+```
+
+Do not pass wildcard paths to `Select-String -LiteralPath`:
+
+```powershell
+# Wrong: -LiteralPath treats *.R literally and can fail with illegal-path errors.
+Select-String -LiteralPath 'scripts\analysis\*.R' -Pattern 'readRDS'
+```
+
+Use `Get-ChildItem` first, or use `Select-String -Path` if wildcard expansion is intended:
+
+```powershell
+Select-String -Path 'scripts\analysis\*.R' -Pattern 'readRDS'
+```
+
 Create directories with `New-Item -Path`; some hosts do not support `New-Item -LiteralPath`:
 
 ```powershell
