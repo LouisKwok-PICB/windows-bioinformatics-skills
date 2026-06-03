@@ -28,6 +28,8 @@ When you create or substantially revise a scientific project plan, create or upd
 
 Initialize these files during planning, not only at the end. After each completed task or meaningful workflow checkpoint, update both files before the final response. If the user already has active versions, preserve their structure and append/update the current state rather than overwriting older project memory. If a project is read-only, report that the recovery records could not be written and include the same handoff content in the final response.
 
+When the user asks to make a plan, first search the repository for existing related Markdown plan records before creating a new file. Prioritize active project docs, `docs/`, publication/package docs, and files with names such as `*PLAN*.md`, `*CURRENT*.md`, `*AUDIT*.md`, `*WORKFLOW*.md`, or task-specific keywords. If a similar plan file exists, preserve its history and add or update a dated section for the new plan objective, decision rules, execution steps, outputs, and next checkpoint. Do not create a duplicate standalone plan file merely because the new request is phrased differently. Create a new descriptive `docs/<TASK>_PLAN.md` only when no similar plan record exists or when the existing file is clearly obsolete/inapplicable; then link the new plan from `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md`.
+
 ## Purpose-Alignment Gate
 
 Before creating or running an analysis, write or update a compact design-to-interpretation record that answers:
@@ -87,7 +89,7 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 ## Minimal Workflow
 
 1. State the claim being tested and what would count as success, partial success, or failure.
-2. Create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, initial plan, known files, decision rules, and recovery notes.
+2. Search for existing related Markdown plan records. Update the closest active plan with a dated new objective section when possible; create a new `docs/<TASK>_PLAN.md` only if no suitable plan exists. Then create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, plan file, known files, decision rules, and recovery notes.
 3. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
 4. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
 5. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
