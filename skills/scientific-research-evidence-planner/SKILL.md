@@ -30,6 +30,8 @@ Initialize these files during planning, not only at the end. After each complete
 
 When the user asks to make a plan, first search the repository for existing related Markdown plan records before creating a new file. Prioritize active project docs, `docs/`, publication/package docs, and files with names such as `*PLAN*.md`, `*CURRENT*.md`, `*AUDIT*.md`, `*WORKFLOW*.md`, or task-specific keywords. If a similar plan file exists, preserve its history and add or update a dated section for the new plan objective, decision rules, execution steps, outputs, and next checkpoint. Do not create a duplicate standalone plan file merely because the new request is phrased differently. Create a new descriptive `docs/<TASK>_PLAN.md` only when no similar plan record exists or when the existing file is clearly obsolete/inapplicable; then link the new plan from `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md`.
 
+When executing a multi-step plan, extract the specific current step before starting work and record it in the recovery records with the plan file, step identifier, objective, start timestamp, expected output, and next checkpoint. At the end of that step, or before changing to another step, update the same records with the outcome, files changed or inspected, whether the step achieved its purpose, and the next active step. If exploration shows the plan cannot answer the user's stated objective, update the plan file with a dated adjustment section before continuing, and record that adjustment in `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md`. Do not leave multi-step progress implicit in chat history only.
+
 ## Purpose-Alignment Gate
 
 Before creating or running an analysis, write or update a compact design-to-interpretation record that answers:
@@ -89,7 +91,7 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 ## Minimal Workflow
 
 1. State the claim being tested and what would count as success, partial success, or failure.
-2. Search for existing related Markdown plan records. Update the closest active plan with a dated new objective section when possible; create a new `docs/<TASK>_PLAN.md` only if no suitable plan exists. Then create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, plan file, known files, decision rules, and recovery notes.
+2. Search for existing related Markdown plan records. Update the closest active plan with a dated new objective section when possible; create a new `docs/<TASK>_PLAN.md` only if no suitable plan exists. Then create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, plan file, current step, known files, decision rules, and recovery notes.
 3. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
 4. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
 5. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.

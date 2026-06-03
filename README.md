@@ -12,6 +12,7 @@ You may find this useful if you:
 - want analysis plans to start from a concrete claim and a fit-for-purpose data audit;
 - want each planned project to leave lightweight recovery notes so another agent can resume after interruption;
 - want new planning requests to reuse and update existing related Markdown plan records before creating duplicate plan files;
+- want multi-step plans to record the current active step, outcome, and next checkpoint instead of relying on chat history;
 - need publication figures that remain readable after journal-size export;
 - want source tables, scripts, figures, and manuscript text to stay synchronized;
 - need compute-heavy analyses to be moved from a local Windows machine to a server without changing the scientific endpoint;
@@ -31,7 +32,7 @@ You may find this useful if you:
 
 | Skill | What it helps with |
 |---|---|
-| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, reusable Markdown plan records, execution-environment feasibility, recovery records, experiment records, reviewer risks, and conservative conclusions. |
+| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, reusable Markdown plan records, active-step recovery records, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
 | `scientific-manuscript-writer` | Draft or audit Results, Methods, Discussion, figure legends, and reviewer-aware scientific prose from actual evidence. |
 | `publication-plot-styler` | Improve ggplot2, ComplexHeatmap, heatmaps, dotplots, UMAPs, labels, legends, spacing, and journal-style exports. |
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
@@ -61,7 +62,7 @@ scientific-research-evidence-planner
 -> scientific-manuscript-writer
 ```
 
-In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, search for and update an existing related Markdown plan when one exists, create a new plan file only when needed, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, check whether the available data can actually answer that question, record panel-level evidence gates before any manuscript-facing figure assembly or publication package, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, and only then write manuscript text that matches the evidence.
+In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, search for and update an existing related Markdown plan when one exists, create a new plan file only when needed, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, record the current active step before executing a multi-step plan, check whether the available data can actually answer that question, record panel-level evidence gates before any manuscript-facing figure assembly or publication package, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, update the step outcome and next checkpoint, and only then write manuscript text that matches the evidence.
 
 这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；再判断现有数据是否真的能回答这个问题；在任何面向 manuscript 的最终组图或 publication package 之前，记录并通过 panel-level evidence gate；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
 
