@@ -12,6 +12,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - Prefer short, single-purpose commands. Use real script files for complex R/Python logic.
 - Use `-LiteralPath` for existing filesystem paths. For `New-Item` directory creation, use `-Path`; not every PowerShell host exposes `New-Item -LiteralPath`.
 - `-LiteralPath` treats wildcard characters such as `*` literally. Do not pass wildcard paths like `C:\dir\*.R` to `Select-String -LiteralPath`; expand files first with `Get-ChildItem` and pass `.FullName`, or use `Select-String -Path` when wildcard expansion is intended.
+- For validation manifests or inventories that intentionally contain wildcard patterns such as `figure3S1_*.tiff` or `S1_Table*.csv`, branch explicitly: use `Test-Path -LiteralPath` / `Get-Item -LiteralPath` for literal paths and `Get-ChildItem -Path` for wildcard rows. Do not validate wildcard rows with `-LiteralPath`, or you will create false missing-file failures.
 - For Windows paths passed into R/Python code, prefer forward slashes: `C:/path/to/project/file.csv`.
 - Avoid PowerShell here-strings piped into `Rscript -` unless encoding has been verified; BOM and `$` expansion can corrupt embedded code.
 - In inline PowerShell commands, avoid R/Python code that contains unescaped `$`. Prefer R `df[['Gene']]` over `df$Gene`.

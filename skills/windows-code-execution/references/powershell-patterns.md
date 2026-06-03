@@ -53,6 +53,32 @@ New-Item -ItemType Directory -Force -Path 'results/figure4/tables' | Out-Null
 
 Use `-LiteralPath` for existing paths when reading, copying, moving, removing, hashing, or opening files.
 
+When a manifest or validation table intentionally stores wildcard patterns, handle literal and wildcard rows separately. `-LiteralPath` is correct for exact paths, but it treats `*` as a literal character and will report false failures for rows such as `figures/figure3S1_*.tiff` or `tables/S1_Table*.csv`.
+
+Stable validation pattern:
+
+```powershell
+$rows = foreach ($row in $validation) {
+  $target = Join-Path $root ($row.RelativePath -replace '/','\')
+  $items = @()
+
+  if ($row.RelativePath.Contains('*')) {
+    $items = @(Get-ChildItem -Path $target -File -ErrorAction SilentlyContinue)
+  } elseif (Test-Path -LiteralPath $target) {
+    $items = @(Get-Item -LiteralPath $target)
+  }
+
+  [pscustomobject]@{
+    Id = $row.Id
+    RelativePath = $row.RelativePath
+    Exists = [bool]($items.Count -gt 0)
+    Count = $items.Count
+  }
+}
+```
+
+This prevents false validation failures while preserving strict literal-path handling for exact files.
+
 ## Safe Object Construction
 
 Count lines and read a header without fragile pipelines:
