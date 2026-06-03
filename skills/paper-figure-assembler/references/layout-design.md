@@ -19,6 +19,8 @@ Use this reference when designing a manuscript main figure or supplementary figu
   - UMAP/dense scatter: square or nearly square bodies;
   - dotplots: width for x-scale, height for categories;
   - text or bar summaries: smaller unless they carry the main claim.
+- Do not force every row to fill the full figure width. Partial-width rows are valid when a panel's evidence role and natural aspect ratio are smaller than the available row.
+- Treat whitespace as a layout decision, not a failure, when it keeps a subordinate context or limitation panel from visually competing with primary evidence.
 - Remove redundant standalone titles inside assembled figures; use panel letters and a figure legend.
 - Legends must be close enough to their panels to be unambiguous, but outside the data body.
 - Prefer fewer panels with readable details over many tiny panels.
@@ -72,10 +74,13 @@ Before declaring a PLOS figure ready:
 3. Set deterministic panel rectangles.
    - Define `x`, `y`, `w`, and `h` in millimeters.
    - Avoid relying on patchwork to infer a dense journal layout.
+   - A panel can be placed on a final row with `w < inner_w`, aligned left, centered, or aligned to an evidence block above it. Use that when the panel is a compact context, breadth, limitation, or source-data summary.
 
 4. Check visual density.
    - Too sparse: large empty margins, tiny data body, oversized legend, or panel with few marks occupying a large row.
    - Too crowded: labels overlap, legends clip, heatmap cells too small, or subplot titles consume body area.
+   - If a sparse panel is only wide because it is alone on a row, shrink the panel width before moving it to another row or supplementary material.
+   - If the remaining row whitespace looks accidental, align the compact panel with the relevant column or evidence block above it and document the choice in the manifest.
 
 5. Redesign nested panels before shrinking the whole figure.
    - If a panel contains internal subplots, do not treat it as an immutable image-sized box.
@@ -126,6 +131,60 @@ figure_layout_dimensions <- function() {
 ```
 
 Adjust the example dimensions to the actual panel count and journal limit. Keep dimensions documented in a manifest.
+
+## Partial-Width Context Row
+
+Use a partial-width row when a low-density panel is scientifically useful in the main figure but should remain visually subordinate. Typical examples are category-count bars, brief limitation summaries, compact source-breadth plots, small schematic bridges, or reviewer-risk notes that support but do not carry the main claim.
+
+Do:
+
+- keep the panel at its natural readable width rather than stretching its x-axis or bars across the full canvas;
+- align it intentionally, such as centered, left-aligned to a related panel, or aligned under the comparator block it supports;
+- keep its panel letter outside the compact panel body so the unused whitespace does not read as missing content;
+- document the partial-width placement in the layout manifest.
+
+Do not:
+
+- stretch a sparse bar chart, table, or metric strip only because it is the only panel in the bottom row;
+- fill the leftover space with decorative or unrelated content;
+- move a scientifically useful context panel to supplementary material solely because a full-width version looks too dominant.
+
+Example:
+
+```r
+figure_layout_dimensions <- function() {
+  width_mm <- 190
+  margin <- 4
+  gap <- 2.5
+  inner_w <- width_mm - 2 * margin
+
+  hA <- 70
+  hB <- 56
+  hC <- 68
+  hD <- 30
+  d_w <- 92
+  d_x <- margin + (inner_w - d_w) / 2
+  height_mm <- 2 * margin + hA + hB + hC + hD + 3 * gap
+
+  yD <- margin
+  yC <- yD + hD + gap
+  yB <- yC + hC + gap
+  yA <- yB + hB + gap
+
+  list(
+    canvas = c(width_mm = width_mm, height_mm = height_mm),
+    panels = list(
+      A = c(x = margin, y = yA, w = inner_w, h = hA),
+      B = c(x = margin, y = yB, w = inner_w, h = hB),
+      C = c(x = margin, y = yC, w = inner_w, h = hC),
+      D = c(x = d_x, y = yD, w = d_w, h = hD)
+    ),
+    layout_notes = c(
+      "Panel D is a compact context row; it is intentionally not full-width."
+    )
+  )
+}
+```
 
 ## Equal-Viewport Multi-UMAP Panel
 
@@ -231,6 +290,8 @@ make_equal_umap_panel_two_embeddings <- function(left_plots, right_plots,
 - Are legends smaller than the data body but still readable?
 - Are paired panels aligned by plot-body size, not just outer panel size?
 - Are titles removed when the figure legend already explains the panel?
+- Are compact context panels kept at a natural width instead of being stretched to fill a row?
+- Does any unused row space look intentional through alignment and spacing?
 - Are heatmap cells or UMAP points distorted by forced raster resizing? If yes, switch back to live object drawing.
 - Does the assembled PNG remain readable without zooming beyond normal manuscript review size?
 - Do standalone panels exported from the same objects match the assembled panel content and numbering?

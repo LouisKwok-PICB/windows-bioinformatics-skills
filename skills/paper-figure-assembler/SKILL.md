@@ -22,6 +22,8 @@ Before assembling, require a panel map. Each panel must have a letter, source ob
 
 For dense multi-panel manuscript figures, rank panel evidence before assigning area: primary evidence gets the largest or clearest body; validation, comparator, robustness, and limitation panels get space according to information density. Do not default to equal-sized panels when the inferential weight and visual density differ.
 
+Rows do not need to be filled edge-to-edge. A low-density context, summary, limitation, or source-breadth panel may sit in a partial-width bottom row with deliberate whitespace. Do not stretch a sparse bar chart, table, or metric summary across the full figure width just because it is alone on a row; full-width rows are for panels whose evidence role and natural aspect ratio justify that space.
+
 ## Workflow
 
 1. Build source panel objects in a function such as `build_objects()`.
@@ -35,6 +37,7 @@ For dense multi-panel manuscript figures, rank panel evidence before assigning a
    - Define `figure_layout_dimensions()` returning `x`, `y`, `w`, `h` for each panel.
    - Use deterministic row heights, column widths, margins, and gaps.
    - Assign space by information density: heatmaps and dense UMAPs need body area; legends need enough width to be readable but should not dominate.
+   - Allow partial-width rows when a subordinate panel is clearer at a smaller natural width; intentional whitespace is acceptable when it preserves evidence hierarchy.
    - When a panel contains subplots, redesign the internal subplot layout before shrinking the whole panel.
 
 3. Draw with `grid`, not raster recomposition.
@@ -54,6 +57,7 @@ For dense multi-panel manuscript figures, rank panel evidence before assigning a
    - Check every panel can be understood from figure legend plus labels.
    - Check the figure still works at the target journal's final physical dimensions, not only when zoomed on screen.
    - Check the visual hierarchy matches the evidence hierarchy: the main validation or conclusion panel should not be visually weaker than a diagnostic panel.
+   - Check no subordinate, low-density panel appears visually promoted because it was stretched to fill an otherwise empty row.
    - Check standalone panels and assembled panels encode the same values, scales, legends, and thresholds.
 
 ## Do Not
