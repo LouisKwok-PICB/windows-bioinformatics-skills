@@ -20,6 +20,7 @@ Use these rules when the task involves single-panel plotting or standalone figur
 
 ## PLOS Computational Biology Figures
 
+- Official source to verify before exact submission export: `https://journals.plos.org/ploscompbiol/s/figures` (checked for these rules on 2026-06-05).
 - Use only Arial, Times, or Symbol fonts in manuscript figures. Prefer Arial for scientific plots unless a project style guide says otherwise.
 - Keep all text that remains inside the submitted figure at 8-12 pt at the final physical/export size. In R/ggplot, remember that `theme(element_text(size = ...))` uses points, while `geom_text(size = ...)` uses millimeters; use roughly `2.8 mm` for 8 pt geom text.
 - Keep figure captions out of the image. Let the manuscript legend carry detailed interpretation, definitions, and nonessential source-data notes.
