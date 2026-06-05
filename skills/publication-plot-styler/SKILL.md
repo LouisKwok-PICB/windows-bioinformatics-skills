@@ -33,6 +33,7 @@ If the plot cannot support the stated conclusion, say so before polishing aesthe
 
 - Source the project style file when available: `src/00_publication_plot_style.R`.
 - Use `publication_theme()` for ggplot outputs unless the script documents a better local reason.
+- For PLOS Computational Biology manuscript figures, enforce the journal's figure constraints before finalizing: use only Arial, Times, or Symbol fonts; keep all text that remains inside the figure at 8-12 pt at final printed/export size; keep captions out of the image; export TIFF or EPS for submission, with review PDF/PNG as needed; target 300-600 dpi and the journal pixel envelope, including 789-2250 px width at 300 dpi and no more than 2625 px height at 300 dpi for main article figures. If a dense figure cannot fit 8 pt labels, shorten labels, move detail to the legend/source tables, split panels, or demote material rather than shrinking text below 8 pt.
 - Export manuscript-facing plots as PDF, PNG, and TIFF by default unless the project explicitly uses a different submission standard. Use PDF for vector review, PNG for quick inspection, and TIFF for journal/submission workflows.
 - Use lossless TIFF compression such as LZW when available. For final assembled figures, prefer 600 dpi TIFF; for source/candidate panels, 300-450 dpi is usually acceptable unless the project specifies otherwise.
 - Use right-side legends by default for ggplot and heatmaps unless the assembled layout requires a different placement.
@@ -66,6 +67,7 @@ Before declaring a figure ready:
 - Confirm heatmap labels sit over cell centers.
 - Confirm all legends and colorbars correspond to visible encodings.
 - Confirm legends are compact enough to avoid wasting panel area but not so tight that symbols and labels overlap.
+- For PLOS Computational Biology targets, explicitly inspect the final-size PNG/PDF and verify every retained panel label, axis label, tick label, colorbar label, legend/key label, and embedded statistic label is 8-12 pt and uses an allowed font. Avoid solving overcrowding by reducing text below 8 pt.
 - Confirm the plot is not sparse, cramped, or dominated by empty margins; revise dimensions or legend placement before final export.
 - Confirm any problem observed in a final assembled figure is fixed at the source panel or internal subplot layout level, not by raster stretching or manual cropping.
 - Confirm the legend explains whether a color scale is sequential, diverging, signed, normalized, percentile-based, clipped, or raw.

@@ -16,7 +16,17 @@ Use these rules when the task involves single-panel plotting or standalone figur
 - Use color-blind-safe palettes and avoid red-green as the only distinction.
 - Prefer white backgrounds and near-black text.
 - Use standard sans-serif fonts; Arial/Helvetica when available, otherwise `sans`.
-- Typical final figure text should be about 5-7 pt; do not rely on huge canvas scaling to fix tiny fonts.
+- For journals with explicit minimum text-size rules, the journal rule overrides compact-style defaults. For PLOS Computational Biology, keep every retained figure label, axis/tick label, colorbar label, legend/key label, and embedded statistic label within 8-12 pt at final size.
+
+## PLOS Computational Biology Figures
+
+- Use only Arial, Times, or Symbol fonts in manuscript figures. Prefer Arial for scientific plots unless a project style guide says otherwise.
+- Keep all text that remains inside the submitted figure at 8-12 pt at the final physical/export size. In R/ggplot, remember that `theme(element_text(size = ...))` uses points, while `geom_text(size = ...)` uses millimeters; use roughly `2.8 mm` for 8 pt geom text.
+- Keep figure captions out of the image. Let the manuscript legend carry detailed interpretation, definitions, and nonessential source-data notes.
+- For main article figures, stay within the PLOS figure box unless the target journal page says otherwise: about `190.5 mm` wide by `222.3 mm` high, equivalent to `2250 x 2625 px` at 300 dpi.
+- Submit TIFF or EPS for final article figures; keep PDF/PNG review copies when useful. Use 300-600 dpi and white backgrounds.
+- If 8 pt text does not fit, redesign before shrinking: shorten visible labels, use titled compact legends, place legends outside dense data, split a panel, move detail to supplementary/source tables, or demote low-priority content.
+- Check the final-size PNG/PDF visually. Do not judge PLOS text compliance from a zoomed viewer or from standalone panels alone.
 
 ## Dimensions
 
