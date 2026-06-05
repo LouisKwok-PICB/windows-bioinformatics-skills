@@ -17,6 +17,7 @@ Copy-Item -Recurse -Force "$repo/skills/publication-plot-styler" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/paper-figure-assembler" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/publication-content-packager" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/windows-code-execution" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/markdown-context-curator" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/pdf" "$codexSkills/"
 ```
 

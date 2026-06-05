@@ -10,6 +10,7 @@ This repository includes general-purpose Windows bioinformatics and computationa
 - multi-panel figure assembly;
 - publication content packaging;
 - Windows command execution;
+- Markdown and YAML recovery-record curation;
 - PDF handling.
 
 ## Excluded

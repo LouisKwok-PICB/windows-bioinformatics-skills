@@ -21,6 +21,9 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - Keep PowerShell object construction simple: compute conditional values first, then create `[pscustomobject]`.
 - Do not pipe directly from a `foreach (...) { ... }` language statement. Assign loop output to `$rows`, then pipe `$rows`.
 - Do not assume newer .NET APIs are present in Windows PowerShell. In particular, `[System.IO.Path]::GetRelativePath()` may be unavailable; for manifest/QC relative paths, compute a normalized root prefix and use `Substring()` after checking `StartsWith()`, or delegate path normalization to R/Python.
+- Do not assume newer PowerShell cmdlet parameters are present. For example, some Windows PowerShell hosts do not support `Format-Hex -Count`; use `Format-Hex -LiteralPath <path> | Select-Object -First <n>` when only a short byte preview is needed.
+- Keep R scripts as UTF-8 without BOM. Windows `Set-Content -Encoding UTF8` can write a BOM in older PowerShell, and some `Rscript` sessions may fail with `unexpected invalid token` at byte 1. Use `[System.IO.File]::WriteAllText($path, $text, (New-Object System.Text.UTF8Encoding($false)))` when converting a script that R must source.
+- Before using `git diff`, `git status`, or path-limited Git comparisons as a QC shortcut, verify the current directory is inside a Git work tree with `git rev-parse --is-inside-work-tree`. If it is not a Git repository, do not treat the Git error as evidence about the files; use file inventories, hashes, timestamps, or targeted content searches instead.
 - Treat memory, CPU, disk, wall-time, package, or OS limits as execution-environment constraints. Create a portable server-run script rather than weakening the scientific endpoint.
 - When a reusable Windows command failure is fixed, update the relevant skill or reference with the failed pattern, symptom, safe replacement, and validation.
 

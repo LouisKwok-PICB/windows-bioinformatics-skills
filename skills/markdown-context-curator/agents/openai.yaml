@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markdown Context Curator"
+  short_description: "Keep Markdown and skill docs compact."
+  default_prompt: "Audit Markdown or skill documentation for context bloat, preserve all information through archives and indexes, and keep active recovery files focused."

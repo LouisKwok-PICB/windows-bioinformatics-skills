@@ -1,8 +1,8 @@
 # Windows Bioinformatics Skills
 
-This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, make readable publication figures, organize manuscript-facing files, avoid common Windows command pitfalls, and prepare portable server-run scripts when local hardware is not enough.
+This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, keep task Markdown and recovery records focused, make readable publication figures, organize manuscript-facing files, avoid common Windows command pitfalls, and prepare portable server-run scripts when local hardware is not enough.
 
-这个仓库整理了一组我在 Windows 生信分析和计算生物学工作中使用的 Codex skills。它们的目的不是替代科研判断，而是让 AI assistant 在协助分析时更稳健：先判断数据是否适合当前科学问题，再围绕明确证据链推进分析，生成可读的论文图片，整理投稿相关文件，减少 Windows 下常见的命令、路径和编码问题，并在本机硬件不足时生成可迁移到服务器运行的脚本。
+这个仓库整理了一组我在 Windows 生信分析和计算生物学工作中使用的 Codex skills。它们的目的不是替代科研判断，而是让 AI assistant 在协助分析时更稳健：先判断数据是否适合当前科学问题，再围绕明确证据链推进分析，让任务 Markdown 和恢复记录保持聚焦，生成可读的论文图片，整理投稿相关文件，减少 Windows 下常见的命令、路径和编码问题，并在本机硬件不足时生成可迁移到服务器运行的脚本。
 
 ## Who This Is For
 
@@ -13,6 +13,7 @@ You may find this useful if you:
 - want each planned project to leave lightweight recovery notes so another agent can resume after interruption;
 - want new planning requests to reuse and update existing related Markdown plan records before creating duplicate plan files;
 - want multi-step plans to record the current active step, outcome, and next checkpoint instead of relying on chat history;
+- want Markdown task memory, recovery notes, package records, and skill docs kept compact without losing provenance;
 - need publication figures that remain readable after journal-size export;
 - want source tables, scripts, figures, and manuscript text to stay synchronized;
 - need compute-heavy analyses to be moved from a local Windows machine to a server without changing the scientific endpoint;
@@ -23,6 +24,7 @@ You may find this useful if you:
 - 在 Windows 上运行 R、Python、PowerShell、ggplot2、ComplexHeatmap 或混合生信脚本；
 - 希望分析计划从明确科学结论和“数据是否适合该目的”的审查开始；
 - 希望每个有计划的项目都留下轻量级恢复记录，方便任务中断后由其他 assistant 接续；
+- 希望 Markdown 任务记忆、恢复记录、package 记录和 skill 文档保持精简，同时不丢失来源和历史索引；
 - 需要制作在期刊版面大小下仍然清晰可读的论文图片；
 - 希望 source tables、脚本、图片和 manuscript 文本保持一致；
 - 需要在本地 Windows 机器跑不动时，把计算量大的分析迁移到服务器，而不是降低原始科学目标；
@@ -38,6 +40,7 @@ You may find this useful if you:
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
 | `publication-content-packager` | Organize manuscript-facing outputs, including figures, source tables, supplementary tables, scripts, upload copies, and closeout QC records. |
 | `windows-code-execution` | Use safer PowerShell, Rscript, and Python patterns for paths, quoting, UTF-8, `$` expansion, file operations on Windows, and portable server-run scripts. |
+| `markdown-context-curator` | Keep Markdown/YAML task memory, recovery notes, package records, archives, and skill docs concise while preserving information through indexes and archives. |
 | `pdf` | Read, create, and visually check PDFs when layout, pagination, or rendered appearance matters. |
 
 | Skill | 主要用途 |
@@ -48,6 +51,7 @@ You may find this useful if you:
 | `paper-figure-assembler` | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和栅格拉伸。 |
 | `publication-content-packager` | 整理论文发表相关输出，包括图片、source tables、补充表、脚本、投稿副本和最终 QC 记录。 |
 | `windows-code-execution` | 提供 Windows 下更稳健的 PowerShell、Rscript、Python 执行规则，处理路径、引号、UTF-8、`$` 展开、文件操作和服务器运行脚本。 |
+| `markdown-context-curator` | 整理 Markdown/YAML 任务记忆、恢复记录、package 记录、归档和 skill 文档，在保留信息索引的同时减少上下文负担。 |
 | `pdf` | 在需要关注排版、页码或渲染效果时，读取、生成和检查 PDF。 |
 
 ## Typical Workflow
@@ -95,6 +99,7 @@ windows-bioinformatics-skills/
     paper-figure-assembler/
     publication-content-packager/
     windows-code-execution/
+    markdown-context-curator/
     pdf/
 ```
 
