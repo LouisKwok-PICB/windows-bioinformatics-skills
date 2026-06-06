@@ -4,7 +4,7 @@
 
 ### `scientific-research-evidence-planner`
 
-Use when a project needs a documented evidence chain, file inventory, reusable Markdown plan record, active-step recovery record, experiment plan, result interpretation, reviewer-risk audit, or conservative conclusion boundary.
+Use when a project needs a documented evidence chain, external-paper or literature-summary record before figure critique, file inventory, reusable Markdown plan record, active-step recovery record, experiment plan, result interpretation, reviewer-risk audit, or conservative conclusion boundary.
 
 Use with:
 

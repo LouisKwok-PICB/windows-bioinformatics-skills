@@ -34,7 +34,7 @@ You may find this useful if you:
 
 | Skill | What it helps with |
 |---|---|
-| `scientific-research-evidence-planner` | Plan analyses around named claims, evidence chains, file inventories, fit-for-purpose data audits, reusable Markdown plan records, active-step recovery records, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
+| `scientific-research-evidence-planner` | Plan analyses and literature reviews around named claims, evidence chains, external-paper summaries, file inventories, fit-for-purpose data audits, reusable Markdown plan records, active-step recovery records, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
 | `scientific-manuscript-writer` | Draft or audit Results, Methods, Discussion, figure legends, and reviewer-aware scientific prose from actual evidence. |
 | `publication-plot-styler` | Improve ggplot2, ComplexHeatmap, heatmaps, dotplots, UMAPs, labels, legends, spacing, and journal-style exports. |
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
@@ -45,7 +45,7 @@ You may find this useful if you:
 
 | Skill | 主要用途 |
 |---|---|
-| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析计划，维护证据链、文件清单、数据适配性审查、运行环境可行性、恢复记录、实验记录、审稿风险和保守结论边界。 |
+| `scientific-research-evidence-planner` | 围绕明确科学结论制定分析和文献审阅计划，维护证据链、外部论文摘要、文件清单、数据适配性审查、运行环境可行性、恢复记录、实验记录、审稿风险和保守结论边界。 |
 | `scientific-manuscript-writer` | 基于真实结果撰写或审查 Results、Methods、Discussion、图注，以及面向审稿风险的科学表述。 |
 | `publication-plot-styler` | 优化 ggplot2、ComplexHeatmap、热图、点图、UMAP、标签、图例、间距和期刊风格导出。 |
 | `paper-figure-assembler` | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和栅格拉伸。 |
@@ -66,9 +66,9 @@ scientific-research-evidence-planner
 -> scientific-manuscript-writer
 ```
 
-In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, search for and update an existing related Markdown plan when one exists, create a new plan file only when needed, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, record the current active step before executing a multi-step plan, check whether the available data can actually answer that question, record panel-level evidence gates before any manuscript-facing figure assembly or publication package, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, update the step outcome and next checkpoint, and only then write manuscript text that matches the evidence.
+In practice, this means the assistant should first clarify what a figure or analysis is supposed to prove, search for and update an existing related Markdown plan when one exists, create a new plan file only when needed, create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` for recovery, record the current active step before executing a multi-step plan, summarize external papers before using their figures as evidence or design references, check whether the available data can actually answer that question, record panel-level evidence gates before any manuscript-facing figure assembly or publication package, decide whether the current machine can run the required analysis, prepare a server-run script when needed, generate or repair the relevant panels, assemble the final figure without distorting plots, package the supporting files, update the step outcome and next checkpoint, and only then write manuscript text that matches the evidence.
 
-这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；再判断现有数据是否真的能回答这个问题；在任何面向 manuscript 的最终组图或 publication package 之前，记录并通过 panel-level evidence gate；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
+这些 skills 适合组合使用。实际工作中，assistant 应该先明确某个分析或图片想证明什么，并创建或更新 `AGENT_MEMORY.yaml` 和 `docs/CURRENT_TASK.md` 作为恢复记录；如果使用外部论文作为证据或图片设计参考，先整理论文核心摘要和来源状态，再逐图分析；随后判断现有数据是否真的能回答这个问题；在任何面向 manuscript 的最终组图或 publication package 之前，记录并通过 panel-level evidence gate；随后判断当前机器是否能运行所需分析，必要时生成服务器运行脚本；之后再生成或修复子图，基于原始绘图对象组装总图，整理支撑文件，最后根据已经确认的证据撰写 manuscript 文本。
 
 ## Server-Run Scripts
 

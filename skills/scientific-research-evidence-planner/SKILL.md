@@ -1,6 +1,6 @@
 ---
 name: scientific-research-evidence-planner
-description: Plan, document, and iteratively execute scientific data-analysis projects around explicit hypotheses, evidence chains, file inventories, experiment attempts, result interpretation, and conservative conclusion boundaries. Use when Codex needs to organize a research project, turn scattered analyses into an ordered reproducible workflow, assess whether results support a target conclusion, or maintain Markdown records of data, scripts, progress, evidence, results, and discussion.
+description: Plan, document, and iteratively execute scientific data-analysis projects around explicit hypotheses, evidence chains, file inventories, experiment attempts, external-paper or literature figure reviews, result interpretation, and conservative conclusion boundaries. Use when Codex needs to organize a research project, turn scattered analyses or papers into an ordered reproducible workflow, assess whether results support a target conclusion, or maintain Markdown records of data, papers, scripts, progress, evidence, results, and discussion.
 ---
 
 # Scientific Research Evidence Planner
@@ -67,12 +67,29 @@ For every proposed final or manuscript-facing panel, the gate record must state:
 
 If any proposed panel is `diagnostic_only`, `exploratory_only`, `failed_original_claim`, `needs_redesign`, or otherwise not clearly supported, do not proceed to final assembly until the user accepts demotion, redesign, or explicit limitation wording. Update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` so future agents do not skip this gate.
 
+## External Literature Review Gate
+
+When external papers, PDFs, article pages, preprints, or figure benchmarks are used as evidence or design references, do not jump directly to figure-layout critique. First create or update a compact paper-summary record that future agents can read quickly.
+
+For each paper, record:
+
+- citation, DOI or official URL, local PDF/cache path, and source status;
+- scientific question, method premise, datasets, assay/platform, species or tissue context;
+- main claim, validation endpoints, comparators, and key result boundary;
+- limitations or reviewer-risk notes relevant to the current project;
+- which figures are likely relevant and why.
+
+After the paper summary exists, analyze figures one at a time. For each selected figure, append a separate figure-learning record with source checked, figure title/caption role, panel map, tissue or biological context, quantitative support, legend/color design, layout structure, evidence chain, transferable lessons, what not to copy, and status. If interrupted, resume from the first paper or figure whose summary/figure record is missing.
+
+Use validated local PDFs and cached figure assets as the default source record after provenance is established. Do not repeatedly re-download or re-query the same paper unless the cache is missing, unreadable, outdated for the task, or the user asks for source re-verification.
+
 ## Routing
 
 Identify the active task axis before deep work and load only the relevant reference:
 
 - `data audit`, `fit-for-purpose data check`, `documentation`, `file inventory`, `terminology`, or `progress log`: read `references/project-documentation.md`.
 - `analysis design`, `experiment planning`, `script ordering`, `result judgment`, or `evidence chain`: read `references/evidence-chain-workflow.md`.
+- `external paper review`, `literature summary`, `PDF-backed figure benchmark`, or `published figure evidence-chain learning`: apply the External Literature Review Gate; use `pdf` when rendering or visually checking PDFs.
 - `reviewer-risk audit`, `claim stress test`, `comparator fairness`, or `pre-submission critique`: read `references/reviewer-risk-routing.md`.
 - `manuscript writing`: use `scientific-manuscript-writer`; use this skill only to keep the evidence chain and project records synchronized.
 - `figure construction`: use `publication-plot-styler` for single panels and `paper-figure-assembler` for multi-panel assembly; use this skill only to define the panel's inferential role and decision rule.
@@ -92,13 +109,14 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 
 1. State the claim being tested and what would count as success, partial success, or failure.
 2. Search for existing related Markdown plan records. Update the closest active plan with a dated new objective section when possible; create a new `docs/<TASK>_PLAN.md` only if no suitable plan exists. Then create or update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with the active goal, plan file, current step, known files, decision rules, and recovery notes.
-3. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
-4. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
-5. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
-6. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
-7. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
-8. Judge the result before making final figures, and apply the Figure Assembly Gate before any manuscript-facing panel assembly or publication package.
-9. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
-10. Before the final response, update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with completed work, changed files, current conclusions, remaining tasks, and any blockers.
+3. If external papers are part of the evidence, pass the External Literature Review Gate before detailed figure critique: create/update the paper-summary record, then review figures one by one.
+4. Audit whether the data are fit for the experimental purpose; identify what they can and cannot answer before designing analyses.
+5. Pass the purpose-alignment gate: connect experimental design, data observables, readout logic, result judgment, and interpretation boundary to the research purpose.
+6. Define the analysis, comparator, null, threshold, or robustness check needed for the claim.
+7. Check whether the current machine can reasonably run the analysis. If hardware or local environment is the blocker, generate a portable server-run script with editable input/output paths rather than weakening the scientific endpoint.
+8. Run experiments iteratively and record parameters, outputs, result interpretation, and next decision.
+9. Judge the result before making final figures, and apply the Figure Assembly Gate before any manuscript-facing panel assembly or publication package.
+10. Promote only supported claims to manuscript-facing status, with limitations stated explicitly.
+11. Before the final response, update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` with completed work, changed files, current conclusions, remaining tasks, and any blockers.
 
 Do not turn a context-specific result into a universal method ranking. State the endpoint under which a method helps and acknowledge comparator signal that is actually detected.
