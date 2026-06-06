@@ -1,6 +1,6 @@
 ---
 name: publication-plot-styler
-description: Create or repair publication-ready scientific plots from R/ggplot2/ComplexHeatmap/pheatmap outputs. Use when Codex needs to generate manuscript figures, improve plot aesthetics, fix legends, labels, axis alignment, heatmap cell sizing, UMAP labels, dotplots, barplots, Sankey/alluvial plots, compact whitespace, or export PDF/PNG/TIFF figures for a journal-style manuscript.
+description: Create or repair publication-ready scientific plots from R/ggplot2/ComplexHeatmap/pheatmap outputs. Use when Codex needs to generate manuscript figures; respond to author visual critique; improve plot aesthetics; fix legends, legend titles, labels, axis alignment, heatmap cell sizing, UMAP labels, dotplots, barplots, Sankey/alluvial plots, compact whitespace; or export PDF/PNG/TIFF figures for a journal-style manuscript.
 ---
 
 # Publication Plot Styler
@@ -26,6 +26,8 @@ Before styling or rewriting plotting code, define the figure contract:
 - statistics needed: sample size or cell count definition, center/spread or interval, test, correction, threshold, and source-data file when applicable;
 - final export formats and physical size;
 - likely reviewer misreadings that labels, legends, or captions must prevent.
+
+For manuscript-facing figures or candidate figures under author review, this contract is a **user-visible checkpoint**, not only internal reasoning. When the user gives visual critique, asks why a figure is not rigorous, or recovery/project docs require author confirmation, first present a concise repair plan and wait for explicit confirmation before editing plot code, rerendering figures, or updating outputs. Treat critique as diagnosis rather than implementation approval unless the user explicitly says to proceed immediately.
 
 If the plot cannot support the stated conclusion, say so before polishing aesthetics.
 

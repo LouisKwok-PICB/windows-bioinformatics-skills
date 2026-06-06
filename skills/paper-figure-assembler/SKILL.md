@@ -1,6 +1,6 @@
 ---
 name: paper-figure-assembler
-description: Assemble publication-ready multi-panel scientific figures from R panel objects. Use when Codex needs to create, repair, or refactor a manuscript main figure or supplementary figure layout from ggplot, ComplexHeatmap, grob, gtable, or draw-function objects, especially when designing canvas size, panel ratios, whitespace, legends, avoiding raster cropping, patchwork tag errors, viewport reuse errors, distorted panels, or unreadable journal-style assembled figures.
+description: Assemble publication-ready multi-panel scientific figures from R panel objects. Use when Codex needs to create, repair, or refactor a manuscript main figure or supplementary figure layout from ggplot, ComplexHeatmap, grob, gtable, or draw-function objects, especially after author layout critique or when designing canvas size, panel ratios, whitespace, legend titles, axis text, panel body alignment, avoiding raster cropping, patchwork tag errors, viewport reuse errors, distorted panels, or unreadable journal-style assembled figures.
 ---
 
 # Paper Figure Assembler
@@ -19,6 +19,8 @@ Keep current-project panel logic and biological conclusions out of this general 
 Use `publication-content-packager` after assembly when the task is to organize final figures, standalone panels, source tables, manuscript text, submission-ready copies, and closeout QC. This assembler should not decide whether a scientific claim is supported; it should enforce that every assembled panel has a clear role and traceable source.
 
 Before assembling, require a panel map. Each panel must have a letter, source object, evidence role, one-sentence takeaway, source table, and claim boundary. Do not assemble panels whose role in the figure argument is unclear; return them to standalone review first.
+
+For manuscript-facing figures or candidate figures under author review, make the panel map and layout repair plan a **user-visible checkpoint**. If the user gives visual critique, questions the figure's rigor, or project recovery docs require author confirmation, first state the affected panels, object-level fixes, validation steps, and unchanged scientific quantities; wait for explicit confirmation before editing scripts, rerendering, or updating outputs. Treat critique as diagnosis rather than permission to proceed unless the user explicitly says to proceed immediately.
 
 For dense multi-panel manuscript figures, rank panel evidence before assigning area: primary evidence gets the largest or clearest body; validation, comparator, robustness, and limitation panels get space according to information density. Do not default to equal-sized panels when the inferential weight and visual density differ.
 
