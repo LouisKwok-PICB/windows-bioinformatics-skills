@@ -29,6 +29,8 @@ Before styling or rewriting plotting code, define the figure contract:
 
 For manuscript-facing figures or candidate figures under author review, this contract is a **user-visible checkpoint**, not only internal reasoning. When the user gives visual critique, asks why a figure is not rigorous, or recovery/project docs require author confirmation, first present a concise repair plan and wait for explicit confirmation before editing plot code, rerendering figures, or updating outputs. Treat critique as diagnosis rather than implementation approval unless the user explicitly says to proceed immediately.
 
+When repairing a subplot or internal element that will later be assembled into a multi-panel figure, render the affected standalone panel or subplot first at its intended final physical size. Inspect and fix symbol sizes, line widths, labels, legends, axes, and data-body dimensions in that standalone output before assembling the full figure. Do not use the assembled figure as the first or only visual check for local subplot repairs.
+
 If the plot cannot support the stated conclusion, say so before polishing aesthetics.
 
 ## R Plotting Defaults
@@ -63,6 +65,7 @@ For UMAP or dense scatter labels, use `ggrepel::geom_text_repel()` with text-onl
 
 Before declaring a figure ready:
 
+- For plots that will be part of an assembled figure, inspect the standalone panel or internal subplot output first; assemble only after the local output passes the requested visual checks.
 - Open the PNG preview.
 - Check that text is readable, legends are not clipped, and labels do not overlap data.
 - Confirm x/y labels do not intrude into the panel.

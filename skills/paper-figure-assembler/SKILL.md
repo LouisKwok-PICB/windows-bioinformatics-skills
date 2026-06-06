@@ -22,6 +22,8 @@ Before assembling, require a panel map. Each panel must have a letter, source ob
 
 For manuscript-facing figures or candidate figures under author review, make the panel map and layout repair plan a **user-visible checkpoint**. If the user gives visual critique, questions the figure's rigor, or project recovery docs require author confirmation, first state the affected panels, object-level fixes, validation steps, and unchanged scientific quantities; wait for explicit confirmation before editing scripts, rerendering, or updating outputs. Treat critique as diagnosis rather than permission to proceed unless the user explicitly says to proceed immediately.
 
+For repairs to a panel's internal subplots, symbols, labels, legends, or plot-body size, use a **standalone-first QC gate**. Export and inspect the affected panel or subplot at its intended final physical size before reassembling the full figure. Only assemble after the standalone output passes the requested checks; do not diagnose a local panel problem only from the assembled figure.
+
 For dense multi-panel manuscript figures, rank panel evidence before assigning area: primary evidence gets the largest or clearest body; validation, comparator, robustness, and limitation panels get space according to information density. Do not default to equal-sized panels when the inferential weight and visual density differ.
 
 Rows do not need to be filled edge-to-edge. A low-density context, summary, limitation, or source-breadth panel may sit in a partial-width bottom row with deliberate whitespace. Do not stretch a sparse bar chart, table, or metric summary across the full figure width just because it is alone on a row; full-width rows are for panels whose evidence role and natural aspect ratio justify that space.
@@ -51,8 +53,10 @@ Rows do not need to be filled edge-to-edge. A low-density context, summary, limi
 4. Export standalone panels from the same live objects.
    - Use the same `draw_panel_box()` routine and panel dimensions as the assembled figure.
    - Write a manifest mapping panel letter, file stub, source object, width, height, and interpretation.
+   - For author-requested panel repairs, inspect the standalone panel or affected internal subplot before running the final assembly step.
 
 5. Validate visually before editing manuscript text.
+   - Confirm standalone panel and subplot outputs pass local visual checks before judging the assembled figure.
    - Open the assembled PNG.
    - Check panel tags A-G exactly once, no A-H leak from nested patchwork.
    - Check no raster distortion/cropping, no heatmap label misalignment, and all colorbars/legends are present.
