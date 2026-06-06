@@ -36,6 +36,27 @@ For files such as `docs/CURRENT_TASK.md`, active project memory, or a current pl
 - Prefer "current source of truth" and "do not use" notes over long narrative history.
 - Include an archive/index pointer for any substantial content moved out.
 
+## Recovery Record Density Rule
+
+For paired recovery records such as `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md`, optimize for the next agent's first five minutes:
+
+- `AGENT_MEMORY.yaml` should be a compact machine-readable index: current status, active objective, source-of-truth files, current output paths, latest decisions, next action, and hard guardrails.
+- `docs/CURRENT_TASK.md` should be a human-readable active handoff: current task, why it matters, what has just changed, expected next checkpoint, and concise recovery notes.
+- Detailed paper reviews, audit narratives, route histories, figure candidate comparisons, command logs, source-table inventories, and completed plans should live in task-specific docs, package docs, or archives, with one-line pointers in the active records.
+- Each completed checkpoint in active records should usually be one bullet with date/status/result/path. Put the full reasoning in the linked source-of-truth document.
+- Do not duplicate the same long conclusion in both recovery files. Put machine-oriented path/status in memory and human-oriented narrative in current task.
+
+Start curation when any of these are true:
+
+- the active task is not visible in the first screen;
+- the file has become mostly completed history rather than next action;
+- a reader must scan many old routes to find the current source of truth;
+- repeated recovery updates are copying multi-paragraph summaries;
+- active files approach several hundred lines or feel costly to load during resume;
+- the same content is duplicated across memory, current task, plan, package, and archive records.
+
+Use no-loss compaction. Move details into a stable source file or archive, then add an index row with: date/route, status, when to read, path, one-line result, and reason it is no longer active. Prefer query tables or "read first / read only if" lists over narrative history when many records exist.
+
 ## Archive Standard
 
 Move completed work into `docs/archive/`, `archive/`, a package archive, or another clearly named archive location.

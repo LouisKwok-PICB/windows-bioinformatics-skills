@@ -32,6 +32,19 @@ When the user asks to make a plan, first search the repository for existing rela
 
 When executing a multi-step plan, extract the specific current step before starting work and record it in the recovery records with the plan file, step identifier, objective, start timestamp, expected output, and next checkpoint. At the end of that step, or before changing to another step, update the same records with the outcome, files changed or inspected, whether the step achieved its purpose, and the next active step. If exploration shows the plan cannot answer the user's stated objective, update the plan file with a dated adjustment section before continuing, and record that adjustment in `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md`. Do not leave multi-step progress implicit in chat history only.
 
+## Recovery Update Trigger Rule
+
+Update `AGENT_MEMORY.yaml` and `docs/CURRENT_TASK.md` when the next agent's first action would otherwise be ambiguous. Required triggers:
+
+- starting or resuming a multi-step scientific task after context recovery;
+- switching phases, such as planning -> execution, external-paper review -> synthesis, analysis -> figure design, candidate figure -> manuscript/package sync, or audit -> implementation;
+- completing a meaningful checkpoint, such as validated inputs, downloaded/cached papers, one paper or figure review, an analysis run, figure generation/QC, manuscript audit, package update, or final plan;
+- receiving a user decision that changes scope, claim boundary, figure route, promotion status, or next action;
+- discovering a blocker, failed endpoint, diagnostic-only result, missing asset, changed provenance, or unsupported claim;
+- before the final response for any non-trivial task that inspected or changed scientific evidence, plans, scripts, figures, manuscripts, packages, or source records.
+
+Do not update recovery records for trivial reads or exploratory commands that do not change the active objective, evidence state, next action, or guardrails. Each update should be compact and include: status, active step, source-of-truth paths, key files inspected or changed, current conclusion, next checkpoint, and "do not" guardrails. If these records begin to accumulate long history or repeated completed logs, invoke `markdown-context-curator` and split details into indexed plan, review, package, or archive files.
+
 ## Purpose-Alignment Gate
 
 Before creating or running an analysis, write or update a compact design-to-interpretation record that answers:
