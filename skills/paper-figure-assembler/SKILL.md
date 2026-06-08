@@ -9,6 +9,8 @@ description: Assemble publication-ready multi-panel scientific figures from R pa
 
 Assemble manuscript figures from live objects, not from cropped PNG/PDF panel images. Use fixed `grid` viewports and redraw every panel on each output device. Treat panel letters as external labels added by the assembler, not as titles inside source panels.
 
+When visually interpreting or quality-checking assembled figures, inspect one figure or one panel at a time. Do not open, screenshot, or judge multiple figures/panels in parallel for visual interpretation. For multi-panel assemblies, proceed in panel order, record the current panel's pass/fail points and repair needs, then continue. Batch commands are acceptable for file metadata, timestamps, manifests, or dimensions, but not for visual reading.
+
 For the full R template and validation checklist, read `references/r-object-assembly.md`.
 For canvas sizing, panel ratios, whitespace control, and multi-panel layout heuristics, read `references/layout-design.md`.
 
@@ -56,6 +58,7 @@ Rows do not need to be filled edge-to-edge. A low-density context, summary, limi
    - For author-requested panel repairs, inspect the standalone panel or affected internal subplot before running the final assembly step.
 
 5. Validate visually before editing manuscript text.
+   - Inspect visual outputs sequentially: one figure or one panel per step, with a concrete judgment before advancing.
    - Confirm standalone panel and subplot outputs pass local visual checks before judging the assembled figure.
    - Open the assembled PNG.
    - Check panel tags A-G exactly once, no A-H leak from nested patchwork.

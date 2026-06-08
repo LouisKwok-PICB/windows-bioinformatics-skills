@@ -9,6 +9,8 @@ description: Create or repair publication-ready scientific plots from R/ggplot2/
 
 Use English text in manuscript-facing figures. Make labels readable at final size, keep legends outside dense data, and choose dimensions from the data structure rather than fixed defaults.
 
+When visually interpreting or quality-checking figures, inspect one image or one panel at a time. Do not open, screenshot, or judge multiple plot images in parallel for visual interpretation. For compound figures, proceed sequentially through the current figure or panel, record its specific pass/fail points and repair needs, then move to the next one. Batch commands are acceptable for file metadata, timestamps, manifests, or dimensions, but not for visual reading.
+
 For detailed plot-type rules, read `references/plot-style-rules.md`.
 For reusable R examples by plot type, read only the relevant section of `references/plot-type-r-examples.md`.
 
@@ -65,6 +67,7 @@ For UMAP or dense scatter labels, use `ggrepel::geom_text_repel()` with text-onl
 
 Before declaring a figure ready:
 
+- Inspect visual outputs sequentially: one image or one panel per step, with a concrete judgment before advancing.
 - For plots that will be part of an assembled figure, inspect the standalone panel or internal subplot output first; assemble only after the local output passes the requested visual checks.
 - Open the PNG preview.
 - Check that text is readable, legends are not clipped, and labels do not overlap data.
