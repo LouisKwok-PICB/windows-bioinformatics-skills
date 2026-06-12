@@ -16,6 +16,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - For Windows paths passed into R/Python code, prefer forward slashes: `C:/path/to/project/file.csv`.
 - Avoid PowerShell here-strings piped into `Rscript -` unless encoding has been verified; BOM and `$` expansion can corrupt embedded code.
 - In inline PowerShell commands, avoid R/Python code that contains unescaped `$`. Prefer R `df[['Gene']]` over `df$Gene`.
+- When passing literal prompt text, skill names, regexes, or documentation snippets that contain `$`, do not wrap them in PowerShell double quotes. Use single quotes or escape the dollar sign with a backtick. Otherwise strings such as `$skill-name` can be partially expanded into invalid text before reaching Python or another CLI.
 - Use `apply_patch` for manual file edits. Do not use shell redirection, `cat`, or here-string writes to create or edit project files.
 - When generating a script or text artifact that would be too large or fragile to produce in one edit, split it into ordered small files or logical script modules first, then combine or source them through a deterministic assembly step. Create each part with normal edit tooling, keep part names ordered, add a short manifest when helpful, and validate the final artifact with parse checks, row/line counts, hashes, or a dry run. Do not emit one huge here-string or redirection write for a large script.
 - Do not build destructive file operations with string-concatenated shell commands. Resolve paths and use native PowerShell cmdlets.

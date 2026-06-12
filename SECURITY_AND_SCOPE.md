@@ -5,6 +5,9 @@
 This repository includes general-purpose Windows bioinformatics and computational biology workflow skills for:
 
 - scientific evidence planning;
+- source-backed literature, accession, gene, pathway, and public database lookup planning;
+- enrichment-analysis design, audit, and interpretation guardrails;
+- compute-resource preflight and server-run planning;
 - manuscript writing and reviewer-risk audit;
 - publication plot styling;
 - multi-panel figure assembly;

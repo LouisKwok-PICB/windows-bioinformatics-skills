@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Compute Resource Planner"
+  short_description: "Preflight CPU, memory, disk, package, and server-run strategy."
+  default_prompt: "Use $scientific-compute-resource-planner to set safe parameters for this long scientific analysis."

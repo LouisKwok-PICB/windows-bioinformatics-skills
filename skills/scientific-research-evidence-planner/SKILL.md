@@ -63,6 +63,18 @@ After the analysis runs, update the same record with:
 
 If an analysis does not have a clear design-to-interpretation path back to the research purpose, do not promote it to a main result. Redesign it, move it to supplementary diagnostics, or drop it.
 
+## Critical Claim Audit Gate
+
+Before promoting any result to a main figure, manuscript claim, or reviewer-facing conclusion, classify the claim and stress-test it:
+
+- claim type: descriptive, associational, comparative, mechanistic, causal, predictive, or methodological;
+- evidence type: direct observable, proxy readout, annotation overlay, enrichment support, statistical pattern, simulation, or external validation;
+- validity risks: construct validity, internal validity, external validity, statistical conclusion validity, and data-fit limitations;
+- alternative explanations: batch, coverage, annotation, sample composition, local density, feature-panel restriction, threshold choice, or comparator mismatch;
+- proportional wording: what verbs are allowed and what stronger wording would overclaim.
+
+If the result only supports a proxy or indirect readout, state the proxy explicitly and keep anatomy, mechanism, causality, universality, and superiority claims out of the main conclusion unless independently supported. Use `references/critical-claim-audit.md` when a skeptical-review or claim-boundary record is needed.
+
 ## Figure Assembly Gate
 
 Before creating a final figure assembly script, publication package, manuscript-facing figure panel, or upload-ready figure file, do not treat a recovery file's `next_action` or an existing script plan as sufficient authorization. First verify that a current panel-level gate record exists, or create one.
@@ -102,6 +114,7 @@ Identify the active task axis before deep work and load only the relevant refere
 
 - `data audit`, `fit-for-purpose data check`, `documentation`, `file inventory`, `terminology`, or `progress log`: read `references/project-documentation.md`.
 - `analysis design`, `experiment planning`, `script ordering`, `result judgment`, or `evidence chain`: read `references/evidence-chain-workflow.md`.
+- `claim classification`, `proxy vs direct evidence`, `alternative explanations`, `bias/confounding`, or `overclaim audit`: read `references/critical-claim-audit.md`.
 - `external paper review`, `literature summary`, `PDF-backed figure benchmark`, or `published figure evidence-chain learning`: apply the External Literature Review Gate; use `pdf` when rendering or visually checking PDFs.
 - `reviewer-risk audit`, `claim stress test`, `comparator fairness`, or `pre-submission critique`: read `references/reviewer-risk-routing.md`.
 - `manuscript writing`: use `scientific-manuscript-writer`; use this skill only to keep the evidence chain and project records synchronized.
@@ -115,6 +128,7 @@ When a domain-specific guardrail exists, use it for allowable claims and termino
 - Maintain a terminology ledger for each project. Record canonical names for methods, datasets, assays, modules, metrics, null models, abbreviations, and comparator labels.
 - Respect the project's primary analysis language. If a project is R-based, write analysis, scoring, statistics, and plotting scripts in R by default.
 - Use mature domain packages when available. Do not hand-roll specialized statistics, file parsing, image processing, or figure assembly when a maintained library provides the needed behavior.
+- Before long, memory-heavy, or permutation-heavy analyses, perform a resource preflight and record CPU, memory, disk, package availability, planned workers, chunking, seeds, progress logging, and restart strategy. If the local machine is inadequate, produce a portable server-run script rather than weakening the scientific endpoint.
 - For manuscript-facing scientific figures, export finalized and candidate panels as `PDF`, `PNG`, and `TIFF` by default unless the project specifies otherwise.
 - Keep source tables for every plotted panel and record package installs, version-sensitive choices, and fallback implementations in project records.
 

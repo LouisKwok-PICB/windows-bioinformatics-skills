@@ -1,6 +1,6 @@
 # Windows Bioinformatics Skills
 
-This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, keep task Markdown and recovery records focused, make readable publication figures, organize manuscript-facing files, avoid common Windows command pitfalls, and prepare portable server-run scripts when local hardware is not enough.
+This repository contains a small set of Codex skills that I use for Windows-based bioinformatics and computational biology work. They are written to help an AI assistant behave less like a command runner and more like a careful research assistant: check whether the data fit the scientific purpose, keep analyses tied to explicit evidence, plan source-backed database/literature lookups, audit enrichment analyses, preflight compute-heavy jobs, keep task Markdown and recovery records focused, make readable publication figures, organize manuscript-facing files, avoid common Windows command pitfalls, and prepare portable server-run scripts when local hardware is not enough.
 
 这个仓库整理了一组我在 Windows 生信分析和计算生物学工作中使用的 Codex skills。它们的目的不是替代科研判断，而是让 AI assistant 在协助分析时更稳健：先判断数据是否适合当前科学问题，再围绕明确证据链推进分析，让任务 Markdown 和恢复记录保持聚焦，生成可读的论文图片，整理投稿相关文件，减少 Windows 下常见的命令、路径和编码问题，并在本机硬件不足时生成可迁移到服务器运行的脚本。
 
@@ -36,6 +36,9 @@ You may find this useful if you:
 |---|---|
 | `scientific-research-evidence-planner` | Plan analyses and literature reviews around named claims, evidence chains, external-paper summaries, file inventories, fit-for-purpose data audits, reusable Markdown plan records, active-step recovery records, execution-environment feasibility, experiment records, reviewer risks, and conservative conclusions. |
 | `scientific-manuscript-writer` | Draft or audit Results, Methods, Discussion, figure legends, and reviewer-aware scientific prose from actual evidence. |
+| `bioinformatics-enrichment-analysis-guardrails` | Design, audit, interpret, and report defensible ORA, GSEA, GSVA, GO, KEGG, Reactome, MSigDB, and module-enrichment workflows with explicit background universes and panel-coverage limits. |
+| `scientific-compute-resource-planner` | Preflight CPU, memory, disk, packages, workers, chunking, progress logging, and server-run strategy for compute-heavy scientific analyses. |
+| `scientific-database-literature-lookup` | Plan source-backed paper, gene, protein, pathway, dataset, accession, and public database lookups with reproducible provenance. |
 | `publication-plot-styler` | Improve ggplot2, ComplexHeatmap, heatmaps, dotplots, UMAPs, labels, legends, spacing, and journal-style exports. |
 | `paper-figure-assembler` | Assemble multi-panel figures from live R objects instead of cropped screenshots or stretched raster panels. |
 | `publication-content-packager` | Organize manuscript-facing outputs, including figures, source tables, supplementary tables, scripts, upload copies, and closeout QC records. |
@@ -47,6 +50,9 @@ You may find this useful if you:
 |---|---|
 | `scientific-research-evidence-planner` | 围绕明确科学结论制定分析和文献审阅计划，维护证据链、外部论文摘要、文件清单、数据适配性审查、运行环境可行性、恢复记录、实验记录、审稿风险和保守结论边界。 |
 | `scientific-manuscript-writer` | 基于真实结果撰写或审查 Results、Methods、Discussion、图注，以及面向审稿风险的科学表述。 |
+| `bioinformatics-enrichment-analysis-guardrails` | 设计、审查、解释和报告 ORA、GSEA、GSVA、GO、KEGG、Reactome、MSigDB 及模块富集分析，强调背景基因集和 panel 覆盖限制。 |
+| `scientific-compute-resource-planner` | 在计算量大的科学分析前预检 CPU、内存、磁盘、软件包、线程、分块、进度日志和服务器运行策略。 |
+| `scientific-database-literature-lookup` | 规划有来源依据的论文、基因、蛋白、通路、数据集、accession 和公共数据库查询，并记录可复现来源。 |
 | `publication-plot-styler` | 优化 ggplot2、ComplexHeatmap、热图、点图、UMAP、标签、图例、间距和期刊风格导出。 |
 | `paper-figure-assembler` | 基于 R 中的 live objects 组装多 panel 图片，避免截图拼图、裁剪变形和栅格拉伸。 |
 | `publication-content-packager` | 整理论文发表相关输出，包括图片、source tables、补充表、脚本、投稿副本和最终 QC 记录。 |
@@ -60,6 +66,8 @@ These skills are meant to work together. A common sequence is:
 
 ```text
 scientific-research-evidence-planner
+-> scientific-database-literature-lookup
+-> bioinformatics-enrichment-analysis-guardrails
 -> publication-plot-styler
 -> paper-figure-assembler
 -> publication-content-packager
@@ -95,6 +103,9 @@ windows-bioinformatics-skills/
   skills/
     scientific-research-evidence-planner/
     scientific-manuscript-writer/
+    bioinformatics-enrichment-analysis-guardrails/
+    scientific-compute-resource-planner/
+    scientific-database-literature-lookup/
     publication-plot-styler/
     paper-figure-assembler/
     publication-content-packager/

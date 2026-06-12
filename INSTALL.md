@@ -13,6 +13,9 @@ New-Item -ItemType Directory -Force -Path $codexSkills | Out-Null
 
 Copy-Item -Recurse -Force "$repo/skills/scientific-research-evidence-planner" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-manuscript-writer" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/bioinformatics-enrichment-analysis-guardrails" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-compute-resource-planner" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-database-literature-lookup" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/publication-plot-styler" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/paper-figure-assembler" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/publication-content-packager" "$codexSkills/"
@@ -34,6 +37,7 @@ New-Item -ItemType Directory -Force -Path $codexSkills | Out-Null
 
 Copy-Item -Recurse -Force "$repo/skills/scientific-research-evidence-planner" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-manuscript-writer" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-database-literature-lookup" "$codexSkills/"
 ```
 
 ## Important Copy Rule

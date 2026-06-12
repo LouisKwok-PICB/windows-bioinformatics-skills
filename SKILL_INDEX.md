@@ -9,9 +9,22 @@ Use when a project needs a documented evidence chain, external-paper or literatu
 Use with:
 
 - `scientific-manuscript-writer` for manuscript text.
+- `scientific-database-literature-lookup` when a claim, citation, gene annotation, pathway context, accession, or public dataset needs source-backed lookup.
+- `bioinformatics-enrichment-analysis-guardrails` when modules, gene lists, ranked genes, spatial panels, or proteomics hits need pathway interpretation.
+- `scientific-compute-resource-planner` before long, memory-heavy, permutation-heavy, or server-bound analyses.
 - `markdown-context-curator` when active plans, recovery notes, or package records become buried under completed history.
 - `publication-plot-styler` and `paper-figure-assembler` once a result has passed the relevant evidence and panel-promotion gates.
 - `publication-content-packager` when outputs are mature enough to organize for submission.
+
+## Scientific Context And Enrichment
+
+### `scientific-database-literature-lookup`
+
+Use when source-backed context is needed for papers, citations, gene/protein annotations, pathways, public datasets, accessions, package documentation, or journal requirements. It emphasizes primary sources, exact identifiers, access dates, and reproducible lookup records.
+
+### `bioinformatics-enrichment-analysis-guardrails`
+
+Use when designing, auditing, interpreting, or reporting ORA, GSEA, GSVA/ssGSEA, GO, KEGG, Reactome, MSigDB, Hallmark, Enrichr, g:Profiler, clusterProfiler, fgsea, or module-enrichment workflows. It focuses on method choice, background universe, gene-ID mapping, assay/panel coverage, FDR, redundancy reduction, and cautious biological interpretation.
 
 ## Manuscript Writing
 
@@ -47,6 +60,10 @@ scientific-research-evidence-planner
 Use after analyses and figures are mature enough to organize into a manuscript-facing package. It creates or audits package structure, source tables, supplementary tables, scripts, submission-ready copies, content maps, and closeout QC.
 
 ## Execution And Files
+
+### `scientific-compute-resource-planner`
+
+Use before computationally intensive scientific work, including large spatial/single-cell/omics matrices, image processing, permutations/null simulations, bootstraps, model training, or package installation decisions. It helps choose workers, chunking, seeds, progress logs, and portable server-run scripts without weakening the scientific endpoint.
 
 ### `markdown-context-curator`
 

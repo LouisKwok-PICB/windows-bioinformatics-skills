@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Database Lookup"
+  short_description: "Source-backed paper, gene, pathway, and dataset lookups."
+  default_prompt: "Use $scientific-database-literature-lookup to find source-backed context for this analysis."

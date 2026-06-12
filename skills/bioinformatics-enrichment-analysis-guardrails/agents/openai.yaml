@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bioinformatics Enrichment Guardrails"
+  short_description: "Defensible pathway, GO, GSEA, and module enrichment workflows."
+  default_prompt: "Use $bioinformatics-enrichment-analysis-guardrails to audit this module enrichment analysis."
