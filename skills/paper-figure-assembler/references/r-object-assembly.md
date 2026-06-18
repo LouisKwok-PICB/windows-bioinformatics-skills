@@ -153,9 +153,13 @@ Always write a manifest with:
 - Panel letter.
 - Source object or source function.
 - Role/question.
+- Promotion route: `main`, `supplement`, `source-only`, `diagnostic-only`, or `remove`.
+- Area rationale: why the allocated width/height matches the panel's evidence weight and natural aspect ratio.
 - Source table or script output supporting the plotted values.
 - Interpretation boundary if relevant.
 - Statistics, threshold, or sample-size definition needed to interpret the panel when applicable.
+
+Do not list a source-only or diagnostic-only record in a final manuscript assembly manifest as if it were a displayed panel. Keep those records in source-data or package QC manifests unless the panel has been redesigned into an interpretable result display.
 
 ## Visual Checklist
 
@@ -163,12 +167,17 @@ Before finalizing manuscript text:
 
 - Panel labels appear exactly once and in correct order.
 - No title from a standalone panel remains inside the assembled figure unless intended.
+- No source-table-like, QC-only, manifest, coverage, status, blocked-endpoint, or gene-set-size-only panel appears as a manuscript result panel.
+- Visible labels use reader-facing scientific/statistical terms rather than internal workflow terms.
 - Text is readable at final export size.
 - Heatmap x/y labels are centered on cells.
 - Colorbars and legends exist for every encoded variable.
 - No legends overlap or clip.
+- Legend titles are centered above keys or otherwise clearly direct-labeled.
 - Shared legends are used only when scales and coordinate semantics are truly shared.
 - Multi-subplot panels preserve axis meaning. Do not remove axis titles from later subplots when those subplots use different embeddings, scales, or coordinate systems.
+- Paired subplots that invite direct comparison have equal data-body sizes and matching symbol sizes unless the difference encodes data.
+- Panel sizes follow evidence hierarchy and information density; low-density statistics are not stretched to visually compete with primary observables.
 - No panel has been raster-cropped, stretched, or compressed.
 - Assembled output and standalone panels are generated from the same live objects.
 

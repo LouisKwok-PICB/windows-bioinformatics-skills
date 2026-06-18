@@ -1,6 +1,4 @@
 interface:
   display_name: "Paper Figure Assembler"
-  short_description: "Assemble readable multi-panel R figures."
-  default_prompt: "Use $paper-figure-assembler to design canvas size, panel ratios, whitespace, legends, and object-based assembly for a publication-ready multi-panel scientific figure."
-policy:
-  allow_implicit_invocation: true
+  short_description: "Evidence-hierarchy multi-panel figure assembly."
+  default_prompt: "Use $paper-figure-assembler to assemble publication-ready multi-panel scientific figures from live R objects after panel evidence gates pass, assigning area by evidence hierarchy, information density, natural aspect ratio, and final journal readability."

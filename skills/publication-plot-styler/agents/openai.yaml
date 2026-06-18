@@ -1,6 +1,4 @@
 interface:
   display_name: "Publication Plot Styler"
-  short_description: "Style scientific plots and legends for publication."
-  default_prompt: "Use $publication-plot-styler to create or repair a publication-ready scientific plot with readable labels, compact legends, appropriate dimensions, and PDF/PNG/TIFF export settings."
-policy:
-  allow_implicit_invocation: true
+  short_description: "Evidence-aware single-panel plot styling."
+  default_prompt: "Use $publication-plot-styler to convert a supported evidence-chain result into a reader-facing publication plot, checking terminology, display grammar, legends, color scales, whitespace, final-size readability, and PDF/PNG/TIFF export settings."

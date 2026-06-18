@@ -1,6 +1,6 @@
 ---
 name: publication-plot-styler
-description: Create or repair publication-ready scientific plots from R/ggplot2/ComplexHeatmap/pheatmap outputs. Use when Codex needs to generate manuscript figures; respond to author visual critique; improve plot aesthetics; fix legends, legend titles, labels, axis alignment, heatmap cell sizing, UMAP labels, dotplots, barplots, Sankey/alluvial plots, compact whitespace; or export PDF/PNG/TIFF figures for a journal-style manuscript.
+description: Create or repair publication-ready scientific plots from R/ggplot2/ComplexHeatmap/pheatmap outputs. Use when Codex needs to generate manuscript figures; respond to author visual critique; improve plot aesthetics; convert a supported evidence-chain result into a reader-facing single panel; fix legends, legend titles, labels, terminology, axis alignment, heatmap cell sizing, UMAP labels, dotplots, barplots, Sankey/alluvial plots, compact whitespace, color scales, or export PDF/PNG/TIFF figures for a journal-style manuscript.
 ---
 
 # Publication Plot Styler
@@ -9,9 +9,13 @@ description: Create or repair publication-ready scientific plots from R/ggplot2/
 
 Use English text in manuscript-facing figures. Make labels readable at final size, keep legends outside dense data, and choose dimensions from the data structure rather than fixed defaults.
 
+Style only results that have a clear scientific or statistical evidence role. A source table, QC gate, manifest, file inventory, coverage audit, status matrix, blocked-endpoint check, or gene-set-size-only summary is not a manuscript result plot. If the plotted content is only a project-control artifact, stop and return it to the evidence planner or source-data package instead of polishing it.
+
+Use reader-facing terminology in the graphic. Avoid internal workflow terms such as endpoint, gate, manifest, QC, source table, blocked, pass/fail, bridge, or other project shorthand unless that term is an accepted domain term in the target manuscript. Put definitions, matching rules, p-value formulas, quantile definitions, thresholds, and selection rules in the figure legend, Methods, or source data rather than in large in-image text.
+
 When visually interpreting or quality-checking figures, inspect one image or one panel at a time. Do not open, screenshot, or judge multiple plot images in parallel for visual interpretation. For compound figures, proceed sequentially through the current figure or panel, record its specific pass/fail points and repair needs, then move to the next one. Batch commands are acceptable for file metadata, timestamps, manifests, or dimensions, but not for visual reading.
 
-For detailed plot-type rules, read `references/plot-style-rules.md`.
+For detailed plot-type rules, evidence-to-display rules, terminology checks, legend rules, and whitespace checks, read `references/plot-style-rules.md`.
 For reusable R examples by plot type, read only the relevant section of `references/plot-type-r-examples.md`.
 
 Separate project-specific biological choices from reusable styling rules. Do not copy dataset names, module IDs, or manuscript conclusions into this skill; keep them in project docs or a project navigator skill.
@@ -28,6 +32,8 @@ Before styling or rewriting plotting code, define the figure contract:
 - statistics needed: sample size or cell count definition, center/spread or interval, test, correction, threshold, and source-data file when applicable;
 - final export formats and physical size;
 - likely reviewer misreadings that labels, legends, or captions must prevent.
+
+Also define the display grammar before coding: spatial map, ROI/context map, heatmap, dotplot, observed-vs-null statistic, paired comparator display, ablation/sensitivity plot, or biological-marker/context panel. If the evidence role cannot be mapped to a reader-facing display grammar, do not create a manuscript-facing plot.
 
 For manuscript-facing figures or candidate figures under author review, this contract is a **user-visible checkpoint**, not only internal reasoning. When the user gives visual critique, asks why a figure is not rigorous, or recovery/project docs require author confirmation, first present a concise repair plan and wait for explicit confirmation before editing plot code, rerendering figures, or updating outputs. Treat critique as diagnosis rather than implementation approval unless the user explicitly says to proceed immediately.
 

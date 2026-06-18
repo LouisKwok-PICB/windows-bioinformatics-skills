@@ -14,6 +14,14 @@ Use this reference when designing a manuscript main figure or supplementary figu
 
 - Start from the evidence chain, not from a grid. Panel order should match the reader's reasoning path.
 - Write a one-line role for each panel before assigning space. If a panel has no unique inferential role, merge it, move it to supplementary material, or remove it.
+- For each panel, record its promotion route before layout: `main`, `supplement`, `source-only`, `diagnostic-only`, or `remove`. Do not use layout polish to promote a panel whose evidence role is source-only or diagnostic-only.
+- Main and supplementary figures must both show interpretable scientific results. Supplementary figures can show robustness, breadth, context, and scope boundaries, but should not be source-table, QC, coverage, manifest, status, blocked-endpoint, or gene-set-size-only plots unless redesigned to show biological behavior or matched statistical behavior.
+- Choose panel types from evidence roles:
+  - primary observable: largest spatial map, embedding, heatmap, or score map that directly shows the phenomenon;
+  - biological anchor: marker/gene/pathway heatmap, dotplot, or context map near the primary observable;
+  - matched statistical support: compact observed-vs-null or calibrated benchmark panel;
+  - comparator boundary: paired same-endpoint visual with matched scales and balanced plot bodies;
+  - robustness/scope: smaller ablation, sensitivity, or subgroup panel unless it carries the central claim.
 - Allocate area by information density:
   - heatmaps: enough body height for cells plus label/legend room;
   - UMAP/dense scatter: square or nearly square bodies;
@@ -23,8 +31,22 @@ Use this reference when designing a manuscript main figure or supplementary figu
 - Treat whitespace as a layout decision, not a failure, when it keeps a subordinate context or limitation panel from visually competing with primary evidence.
 - Remove redundant standalone titles inside assembled figures; use panel letters and a figure legend.
 - Legends must be close enough to their panels to be unambiguous, but outside the data body.
+- When multiple legends belong to one panel, arrange them so each legend title is centered above its keys or clearly direct-labeled. Avoid one tall legend stack when bottom or grouped legends preserve plot-body size.
 - Prefer fewer panels with readable details over many tiny panels.
 - Store dataset-specific panel choices in the project repository, not in this reusable layout reference.
+
+## Panel Eligibility Gate
+
+Before placing a panel, ask:
+
+1. What scientific question does this panel answer?
+2. What independent observable or matched statistic is visible in the panel?
+3. Does the panel add a new inference beyond neighboring panels?
+4. Is the visible vocabulary manuscript-facing rather than workflow-facing?
+5. Is the panel naturally spatial, heatmap, dotplot, paired comparator, null/statistic, or robustness display?
+6. Would the panel remain meaningful if the figure legend supplied definitions but the image itself contained no long explanatory text?
+
+If the answer fails because the panel only shows source availability, QC status, file counts, gene-set size, or pipeline success, route it to source data/package records. If it fails because the evidence is valid but the display is weak, return it to `publication-plot-styler` for a standalone redesign before assembly.
 
 ## Canvas Size Heuristics
 
@@ -81,6 +103,8 @@ Before declaring a PLOS figure ready:
    - Too crowded: labels overlap, legends clip, heatmap cells too small, or subplot titles consume body area.
    - If a sparse panel is only wide because it is alone on a row, shrink the panel width before moving it to another row or supplementary material.
    - If the remaining row whitespace looks accidental, align the compact panel with the relevant column or evidence block above it and document the choice in the manifest.
+   - If a low-information statistic panel competes visually with a primary spatial/heatmap panel, reduce its width or height, move it to a partial-width row, or demote it.
+   - Do not make all panels the same size unless their evidence weight, visual density, and natural aspect ratios are genuinely comparable.
 
 5. Redesign nested panels before shrinking the whole figure.
    - If a panel contains internal subplots, do not treat it as an immutable image-sized box.
@@ -134,7 +158,7 @@ Adjust the example dimensions to the actual panel count and journal limit. Keep 
 
 ## Partial-Width Context Row
 
-Use a partial-width row when a low-density panel is scientifically useful in the main figure but should remain visually subordinate. Typical examples are category-count bars, brief limitation summaries, compact source-breadth plots, small schematic bridges, or reviewer-risk notes that support but do not carry the main claim.
+Use a partial-width row when a low-density panel is scientifically useful in the main figure but should remain visually subordinate. Typical examples are compact matched-statistic summaries, brief limitation summaries, small robustness panels, or context panels that support but do not carry the main claim.
 
 Do:
 
@@ -292,6 +316,9 @@ make_equal_umap_panel_two_embeddings <- function(left_plots, right_plots,
 - Are titles removed when the figure legend already explains the panel?
 - Are compact context panels kept at a natural width instead of being stretched to fill a row?
 - Does any unused row space look intentional through alignment and spacing?
+- Does panel area reflect evidence hierarchy rather than equal-size convenience?
+- Are low-density statistic panels visually subordinate to primary observable panels?
+- Are supplementary panels still interpretable result displays rather than source/QC/status graphics?
 - Are heatmap cells or UMAP points distorted by forced raster resizing? If yes, switch back to live object drawing.
 - Does the assembled PNG remain readable without zooming beyond normal manuscript review size?
 - Do standalone panels exported from the same objects match the assembled panel content and numbering?

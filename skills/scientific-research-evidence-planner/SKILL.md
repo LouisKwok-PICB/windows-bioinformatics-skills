@@ -1,6 +1,6 @@
 ---
 name: scientific-research-evidence-planner
-description: Plan, document, and iteratively execute scientific data-analysis projects around explicit hypotheses, evidence chains, file inventories, experiment attempts, external-paper or literature figure reviews, result interpretation, and conservative conclusion boundaries. Use when Codex needs to organize a research project, turn scattered analyses or papers into an ordered reproducible workflow, assess whether results support a target conclusion, or maintain Markdown records of data, papers, scripts, progress, evidence, results, and discussion.
+description: Plan, document, and iteratively execute scientific data-analysis projects around explicit hypotheses, evidence chains, fit-for-purpose data audits, scientific exploration plans, experiment attempts, external-paper or literature figure reviews, result interpretation, and conservative conclusion boundaries. Use when Codex needs to organize a research project, design or audit a scientific exploration plan, turn scattered analyses or papers into an ordered reproducible workflow, assess whether results support a target conclusion, or maintain Markdown records of data, papers, scripts, progress, evidence, results, and discussion.
 ---
 
 # Scientific Research Evidence Planner
@@ -18,6 +18,14 @@ Treat every analysis as a test of a named scientific claim, not as a plot-produc
 - how the result will be judged.
 
 Use conservative language when evidence is incomplete. Separate observations, statistical support, biological interpretation, and manuscript-ready claims.
+
+## Scientific Exploration Planning Gate
+
+Before planning or running exploratory scientific analyses, explicitly pass the planning chain:
+
+> biological or methodological question -> required data -> data-fit judgment -> endpoint-native analysis -> evidence-chain role -> result judgment rule -> display or reporting route -> allowed claim -> forbidden claim.
+
+If this chain is missing, do not run analysis, draw figures, or create a new plan file. First repair the plan. Use `references/scientific-exploration-planning-rules.md` whenever the task involves exploratory validation, multimodal data use, algorithm-rationale testing, evidence-chain restructuring, deciding what can become a main/supplement figure, or the user challenges whether the plan is scientifically meaningful.
 
 ## Recovery And Handoff Rule
 
@@ -113,7 +121,7 @@ Use validated local PDFs and cached figure assets as the default source record a
 Identify the active task axis before deep work and load only the relevant reference:
 
 - `data audit`, `fit-for-purpose data check`, `documentation`, `file inventory`, `terminology`, or `progress log`: read `references/project-documentation.md`.
-- `analysis design`, `experiment planning`, `script ordering`, `result judgment`, or `evidence chain`: read `references/evidence-chain-workflow.md`.
+- `scientific exploration planning`, `analysis design`, `experiment planning`, `script ordering`, `result judgment`, `evidence chain`, `multimodal validation planning`, `algorithm-rationale validation`, or `figure-evidence planning`: read `references/scientific-exploration-planning-rules.md` first, then `references/evidence-chain-workflow.md` if implementation ordering is needed.
 - `claim classification`, `proxy vs direct evidence`, `alternative explanations`, `bias/confounding`, or `overclaim audit`: read `references/critical-claim-audit.md`.
 - `external paper review`, `literature summary`, `PDF-backed figure benchmark`, or `published figure evidence-chain learning`: apply the External Literature Review Gate; use `pdf` when rendering or visually checking PDFs.
 - `reviewer-risk audit`, `claim stress test`, `comparator fairness`, or `pre-submission critique`: read `references/reviewer-risk-routing.md`.

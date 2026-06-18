@@ -1,4 +1,4 @@
 interface:
   display_name: "Scientific Evidence Planner"
-  short_description: "Evidence-chain and literature review planning."
-  default_prompt: "Use $scientific-research-evidence-planner to turn this research question or paper set into a documented evidence-chain plan, reusing existing project records when available."
+  short_description: "Scientific exploration, data-fit, and evidence-chain planning."
+  default_prompt: "Use $scientific-research-evidence-planner to turn this scientific question, dataset, or figure-validation goal into a plan that starts from the claim, checks data fit, defines endpoint-native analyses, records evidence-chain roles, and sets conservative claim boundaries."
