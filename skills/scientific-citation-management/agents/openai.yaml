@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Citation Management"
+  short_description: "Verify metadata, BibTeX, DOI/PMID IDs, and manuscript citation usage."
+  default_prompt: "Use $scientific-citation-management to verify and clean these citations before manuscript submission."

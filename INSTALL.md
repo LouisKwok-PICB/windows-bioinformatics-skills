@@ -12,6 +12,9 @@ $codexSkills = "$env:USERPROFILE/.codex/skills"
 New-Item -ItemType Directory -Force -Path $codexSkills | Out-Null
 
 Copy-Item -Recurse -Force "$repo/skills/scientific-research-evidence-planner" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-literature-review" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-citation-management" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-study-design-and-statistics" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-manuscript-writer" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/bioinformatics-enrichment-analysis-guardrails" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-compute-resource-planner" "$codexSkills/"
@@ -36,6 +39,8 @@ $codexSkills = "$env:USERPROFILE/.codex/skills"
 New-Item -ItemType Directory -Force -Path $codexSkills | Out-Null
 
 Copy-Item -Recurse -Force "$repo/skills/scientific-research-evidence-planner" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-literature-review" "$codexSkills/"
+Copy-Item -Recurse -Force "$repo/skills/scientific-citation-management" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-manuscript-writer" "$codexSkills/"
 Copy-Item -Recurse -Force "$repo/skills/scientific-database-literature-lookup" "$codexSkills/"
 ```

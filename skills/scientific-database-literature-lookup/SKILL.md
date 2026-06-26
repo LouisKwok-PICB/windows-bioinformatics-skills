@@ -22,6 +22,20 @@ When browsing or querying external sources, return enough provenance for another
 - Use official package documentation for software behavior and version-sensitive APIs.
 
 Read `references/source-selection.md` for a compact routing table.
+Read `references/database-query-patterns.md` for reproducible API examples and retrieval-contract templates.
+
+## Retrieval Contract Gate
+
+For database lookups that feed analysis, manuscript claims, or downloadable datasets, define a retrieval contract before calling APIs:
+
+- target entity and canonical identifier;
+- organism, taxon, genome build, tissue, disease, date, or release constraints;
+- scope: targeted lookup, cross-reference, or exhaustive retrieval;
+- server-side filters vs local filters;
+- expected fields and output format;
+- count or pagination strategy when completeness matters.
+
+Ask a clarifying question when a missing field changes the scientific meaning. Examples include organism for gene symbols, genome build for variants, exact accession level for GEO/SRA, and complete vs targeted retrieval.
 
 ## Literature Summary Gate
 
@@ -45,3 +59,4 @@ For any paper that will influence figure design, method wording, or biological i
 - For recommendations that could change, verify current status.
 - For data downloads, record exact accession, file name, size if available, and download URL.
 - For manuscript use, retain citation identifiers and access dates in the project record.
+- For exhaustive API retrieval, report expected count, retrieved count, local-filtered count, and warnings if completeness cannot be verified.

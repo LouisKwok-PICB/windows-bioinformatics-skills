@@ -28,6 +28,24 @@ For longer R code, prefer creating or updating an `.R` script with `apply_patch`
 & 'C:/Program Files/R/R-x.y.z/bin/Rscript.exe' .\path\to\script.R
 ```
 
+Use a real `.R` script, not an inline command, when the R code contains any of:
+
+- `data.table` filters with `&` or `|`;
+- `$` column access, formula terms, or nested list access that may be expanded by PowerShell;
+- multi-line functions, loops, or grouped summaries;
+- code long enough that command-line quote escaping becomes hard to inspect.
+
+Safe scratch-check pattern:
+
+```powershell
+# 1. Create or update tmp_check.R with apply_patch, keeping it UTF-8 without BOM.
+# 2. Run the script directly.
+& 'C:/Program Files/R/R-x.y.z/bin/Rscript.exe' --vanilla .\tmp_check.R
+# 3. Remove the scratch script with apply_patch when finished.
+```
+
+Do not switch to `cmd /c Rscript -e "..."` as a generic escape hatch for complex R snippets. `cmd.exe` treats characters such as `&` as command separators, so expressions like `dt[x == 1 & y == 2]` can be split before R sees them.
+
 Avoid this fragile pattern:
 
 ```powershell

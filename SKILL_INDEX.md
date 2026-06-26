@@ -9,6 +9,9 @@ Use when a project needs a scientific exploration plan that starts from a named 
 Use with:
 
 - `scientific-manuscript-writer` for manuscript text.
+- `scientific-literature-review` when a focused, scoping, or systematic-style literature review needs reproducible search, screening, and synthesis records.
+- `scientific-citation-management` when DOI/PMID/PMCID/arXiv identifiers, BibTeX, reference lists, or manuscript citation usage need verification.
+- `scientific-study-design-and-statistics` when experimental design, sampling unit, test selection, assumptions, effect sizes, power, or statistical reporting need audit.
 - `scientific-database-literature-lookup` when a claim, citation, gene annotation, pathway context, accession, or public dataset needs source-backed lookup.
 - `bioinformatics-enrichment-analysis-guardrails` when modules, gene lists, ranked genes, spatial panels, or proteomics hits need pathway interpretation.
 - `scientific-compute-resource-planner` before long, memory-heavy, permutation-heavy, or server-bound analyses.
@@ -16,11 +19,23 @@ Use with:
 - `publication-plot-styler` and `paper-figure-assembler` once a result has passed the relevant evidence and panel-promotion gates.
 - `publication-content-packager` when outputs are mature enough to organize for submission.
 
-## Scientific Context And Enrichment
+## Literature, Citations, Statistics, And Enrichment
+
+### `scientific-literature-review`
+
+Use when planning or executing focused, scoping, or systematic-style literature reviews. It covers search strategy, database selection, inclusion/exclusion criteria, PRISMA-style screening records, citation chaining, paper extraction tables, thematic synthesis, and conservative limits on how prior work can support a current claim.
+
+### `scientific-citation-management`
+
+Use when verifying and cleaning citation metadata, DOI/PMID/PMCID/arXiv identifiers, BibTeX files, reference lists, unresolved manuscript citations, unused entries, duplicate citations, and missing bibliography fields.
+
+### `scientific-study-design-and-statistics`
+
+Use when designing or auditing experiments and statistical analyses. It covers randomization, blocking, sampling units, pseudoreplication, test/model selection, assumptions, diagnostics, effect sizes, multiple testing, power/sample-size reasoning, and reviewer-facing statistical methods.
 
 ### `scientific-database-literature-lookup`
 
-Use when source-backed context is needed for papers, citations, gene/protein annotations, pathways, public datasets, accessions, package documentation, or journal requirements. It emphasizes primary sources, exact identifiers, access dates, and reproducible lookup records.
+Use when source-backed context is needed for papers, citations, gene/protein annotations, pathways, public datasets, accessions, package documentation, or journal requirements. It emphasizes primary sources, retrieval contracts, exact identifiers, access dates, API/query provenance, and count reconciliation when completeness matters.
 
 ### `bioinformatics-enrichment-analysis-guardrails`
 
@@ -81,6 +96,9 @@ Use when reading, creating, or reviewing PDFs where rendering and layout matter.
 
 - Do not use writing skills to invent missing data, statistics, citations, or conclusions.
 - Do not use figure skills to decide whether a scientific claim is supported.
+- Do not treat literature-review outputs as evidence unless search scope, source status, and paper applicability are clear.
+- Do not treat citation count, review-article statements, or database associations as direct mechanistic evidence.
+- Do not report statistical tests without identifying the independent unit and design structure.
 - Do not start exploratory plans from available plots, source tables, or convenient metrics; start from the question, required data, data-fit judgment, endpoint-native analysis, evidence role, result judgment, display route, allowed claim, and forbidden claim.
 - Do not treat source tables, QC gates, manifests, coverage audits, status matrices, blocked-endpoint checks, or gene-set-size-only plots as manuscript figures.
 - Do not use plot styling or figure assembly to visually promote source-only, diagnostic-only, or unsupported results.

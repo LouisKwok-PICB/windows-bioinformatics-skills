@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Study Design And Statistics"
+  short_description: "Design studies, choose tests, audit assumptions, power, and report statistics."
+  default_prompt: "Use $scientific-study-design-and-statistics to choose a defensible design and statistical analysis for this study."

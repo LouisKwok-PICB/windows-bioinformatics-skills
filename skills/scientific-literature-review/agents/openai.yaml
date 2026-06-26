@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Literature Review"
+  short_description: "Systematic, scoping, and focused source-backed literature review workflows."
+  default_prompt: "Use $scientific-literature-review to plan and synthesize a source-backed review for this research question."
