@@ -130,6 +130,19 @@ foreach ($f in $files) {
 } | Format-Table -AutoSize
 ```
 
+The same failure can appear in compressed one-line QC commands with nested `if/else` blocks:
+
+```powershell
+# Wrong: can fail with "An empty pipe element is not allowed".
+foreach ($f in $files) {
+  if (Test-Path -LiteralPath $f) {
+    [pscustomobject]@{ File = $f; Exists = $true }
+  } else {
+    [pscustomobject]@{ File = $f; Exists = $false }
+  }
+} | Export-Csv -LiteralPath checks.csv -NoTypeInformation
+```
+
 Use a collected variable, then pipe the variable:
 
 ```powershell
@@ -142,6 +155,21 @@ $rows = foreach ($f in $files) {
 }
 
 $rows | Format-Table -AutoSize
+```
+
+For compact QC commands, use the same idea explicitly:
+
+```powershell
+$rows = @()
+foreach ($f in $files) {
+  $exists = Test-Path -LiteralPath $f
+  $rows += [pscustomobject]@{
+    File = $f
+    Exists = $exists
+  }
+}
+
+$rows | Export-Csv -LiteralPath checks.csv -NoTypeInformation -Encoding UTF8
 ```
 
 For hash or QC checks, keep validation separate from display:
