@@ -14,6 +14,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 - `-LiteralPath` treats wildcard characters such as `*` literally. Do not pass wildcard paths like `C:\dir\*.R` to `Select-String -LiteralPath`; expand files first with `Get-ChildItem` and pass `.FullName`, or use `Select-String -Path` when wildcard expansion is intended.
 - For validation manifests or inventories that intentionally contain wildcard patterns such as `panelS1_*.tiff` or `supplement_table_*.csv`, branch explicitly: use `Test-Path -LiteralPath` / `Get-Item -LiteralPath` for literal paths and `Get-ChildItem -Path` for wildcard rows. Do not validate wildcard rows with `-LiteralPath`, or you will create false missing-file failures.
 - For Windows paths passed into R/Python code, prefer forward slashes: `C:/path/to/project/file.csv`.
+- When reading document text or non-ASCII filenames from PowerShell, set Python and console output to UTF-8, discover paths inside Python (for example `Path.glob('*.docx')`) instead of hard-coding non-ASCII path literals, and verify extracted text with Python/OOXML or `read_text(encoding='utf-8')` rather than PowerShell display.
 - Avoid PowerShell here-strings piped into `Rscript -` unless encoding has been verified; BOM and `$` expansion can corrupt embedded code.
 - In inline PowerShell commands, avoid R/Python code that contains unescaped `$`. Prefer R `df[['Gene']]` over `df$Gene`.
 - When passing literal prompt text, skill names, regexes, or documentation snippets that contain `$`, do not wrap them in PowerShell double quotes. Use single quotes or escape the dollar sign with a backtick. Otherwise strings such as `$skill-name` can be partially expanded into invalid text before reaching Python or another CLI.
@@ -37,7 +38,7 @@ Use this skill before running non-trivial shell commands in a Windows workspace,
 
 Load only the reference needed for the current command:
 
-- Rscript, Python, `$` expansion, and stdin/here-string problems: `references/r-python-commands.md`.
+- Rscript, Python, `$` expansion, stdin/here-string problems, and non-ASCII document reading: `references/r-python-commands.md`.
 - PowerShell filesystem reads, path creation, object construction, pipelines, and hash/QC checks: `references/powershell-patterns.md`.
 - Portable server-run scripts for work that cannot run locally: `references/server-run-scripts.md`.
 
