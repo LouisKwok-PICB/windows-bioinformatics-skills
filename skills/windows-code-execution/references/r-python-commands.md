@@ -46,6 +46,14 @@ Safe scratch-check pattern:
 
 Do not switch to `cmd /c Rscript -e "..."` as a generic escape hatch for complex R snippets. `cmd.exe` treats characters such as `&` as command separators, so expressions like `dt[x == 1 & y == 2]` can be split before R sees them.
 
+When `install.packages()` from PowerShell repeatedly fails against HTTPS CRAN mirrors with messages such as `SSL connect error`, retry with a Windows binary install from an HTTP CRAN mirror before treating the package as unavailable:
+
+```powershell
+& 'C:/Program Files/R/R-x.y.z/bin/Rscript.exe' --vanilla -e "options(download.file.method='wininet'); install.packages(c('pkg1','pkg2'), repos='http://cran.r-project.org', type='binary')"
+```
+
+This is a local Windows network workaround, not the preferred default. `wininet` is deprecated for HTTP/HTTPS URLs, so record that it was used and re-check installed package versions afterward.
+
 Avoid this fragile pattern:
 
 ```powershell
